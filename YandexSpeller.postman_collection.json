@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bd623e69-1a03-42d8-b172-de0282af929b",
+		"_postman_id": "e1f64a8c-5978-4997-a96a-28c25780a4ca",
 		"name": "YandexSpeller",
 		"description": "https://yandex.ru/dev/speller/\r\n\r\nСервис проверки правописания Яндекс.Спеллер (коротко Спеллер) предлагает разработчикам использовать возможность интерактивной проверки орфографии на страницах своих сайтов.\r\n\r\nСпеллер анализирует слова, основываясь на правилах орфографии и лексике современного языка, а также использует технологии машинного обучения.\r\n\r\nСервис в настоящее время поддерживает три языка:\r\n- русский;\r\n- украинский;\r\n- английский.\r\n\r\nЯндекс.Спеллер является HTTP-службой и предоставляет API для обработки клиентских запросов на проверку орфографии. Яндекс.Спеллер поддерживает HTTP(S) GET- и POST-запросы и работает в кодировке UTF-8.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -17,7 +17,163 @@
 							"item": [
 								{
 									"name": "WithoutOptionalParams",
-									"item": [],
+									"item": [
+										{
+											"name": "CorrectText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?={{testTextPart1}} {{testTextPart2}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "",
+															"value": "{{testTextPart1}} {{testTextPart2}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OneErrorText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "1133ecea-1286-482e-9c4d-be26fa91f7b3",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"1\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "6ac5cf5c-a877-4ba7-9982-27e6d13c532d",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0].pos === 15);",
+															"tests['Error line number'] = (jsonData[0].row === 0);",
+															"tests['Error column number'] = (jsonData[0].col === 15);",
+															"tests['Error word length'] = (jsonData[0].len === 6);",
+															"tests['Error word'] = (jsonData[0].word === \"мяхких\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.include(\"мягких\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?{{paramText}}={{testTextWithOneError}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithOneError}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "0b418a32-1e47-44a2-9278-5d85f20ec90f",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"2\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "b71d3fd3-9b69-4faf-a994-77da824b08e4",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0].pos === 3);",
+															"tests['Error line number'] = (jsonData[0].row === 0);",
+															"tests['Error column number'] = (jsonData[0].col === 3);",
+															"tests['Error word length'] = (jsonData[0].len === 5);",
+															"tests['Error word'] = (jsonData[0].word === \"выпий\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.include(\"выпей\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?{{paramText}}={{testTextWithFewErrors}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithFewErrors}}"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"event": [
 										{
 											"listen": "prerequest",
@@ -288,6 +444,30 @@
 					"_postman_isSubFolder": true
 				}
 			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bad824b9-5783-420b-a069-07233120c38c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
+							"pm.environment.set(\"responseData\", \"json\");",
+							"pm.environment.set(\"requestResult\", \"200\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6b8d4fc-028d-4987-aee6-5d39943cf1aa",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"protocolProfileBehavior": {}
 		}
 	],
@@ -308,194 +488,219 @@
 				"id": "05dc93bc-8cf6-4164-bd76-ed82b83fa4c8",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"var requestResult = parseInt(pm.environment.get(\"requestResult\"));",
+					"pm.test(\"Status code is \" + requestResult, function () {",
+					"    pm.response.to.have.status(requestResult);",
+					"});",
+					"",
+					"",
+					"var contentTypeHeader = pm.environment.get(\"contentTypeHeader\");",
+					"pm.test(\"Header. Content-Type is \" + contentTypeHeader, function () {",
+					"    pm.response.to.be.header(\"Content-Type\", contentTypeHeader);",
+					"});",
+					"",
+					"",
+					"var responseData = (pm.environment.get(\"responseData\"));",
+					"pm.test(\"Response is \" + responseData, function () {",
+					"    if (responseData === 'json') {",
+					"        pm.response.to.be.json;",
+					"    } if (responseData === 'xml') {",
+					"        pm.expect(xml2Json(responseBody)).to.exist;",
+					"}});",
+					"",
+					"",
+					"var count = parseInt(pm.environment.get(\"jsonDataLength\"));",
+					"pm.test(\"Response json length is \" + count, function () {",
+					"    var jsonData = pm.response.json();",
+					"    pm.expect(jsonData.length).to.eql(count);",
+					"});"
 				]
 			}
 		}
 	],
 	"variable": [
 		{
-			"id": "45b1cf2c-7dbc-4531-bc1a-902dfef24c48",
+			"id": "acfb15b0-828e-4e3f-b925-12990f531a51",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "4ebc2170-568e-402a-854f-1c82b549542f",
+			"id": "17310dac-4b5d-464f-838b-b7d09c8fa5b6",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "6931db8e-97e3-47b9-a5e7-2049ce76b7f5",
+			"id": "4f24bbb8-cfc6-46d8-b4d2-3e53f85e6360",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "339e4101-8f37-4934-b420-561cb016d409",
+			"id": "cfdb0122-acd7-4215-87d5-85cc7d458d8e",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "2d688f8c-e974-4765-ae48-a040e0f6fe7d",
+			"id": "2d5b6e6e-2a1d-4dd3-a12d-7ad8cb594b72",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "7c275b5b-a28b-4942-b6aa-aa8d3bbcdbc8",
+			"id": "c2e9a8ba-9a2c-44b7-a325-5fd3db024b05",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "5c961241-eea1-4a89-90d4-8cb39affcbfc",
+			"id": "f9666bfb-b2b1-4deb-bc42-e7d8ea061219",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "be177e4c-a652-413b-96e5-466c4d4009e0",
+			"id": "2cc15ad1-2753-4e2c-891b-806a980b0a0b",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "0858b85f-04ae-49b8-8f19-e71e45b5ae18",
+			"id": "55c7c577-b0e4-4fff-9e8a-58020f266a79",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "576188b2-a594-4af5-ac92-38b741a3fce2",
+			"id": "ae8defa5-39b4-4e9f-a09d-dfea19c86958",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "2bed9eba-4e91-419b-9396-d19ef93dc797",
+			"id": "59943760-7dbb-496d-8d8a-98e2e1034154",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "408716a8-0352-4b63-bec5-065721fbab63",
+			"id": "858a3529-c7d4-4915-a0ab-bfa2f7fa165d",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "468a1430-98c8-40bd-80ac-08ea951b36d4",
+			"id": "266ddced-f8ed-4b17-a77b-f0e47ca461cc",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "334ba888-b406-4f5a-9e6b-51bd1fb60bc0",
+			"id": "d56c0b84-f2a4-44a4-87b2-c320ea1538ae",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "639c45d6-822d-41e8-9b16-f27bcff4bf90",
+			"id": "dbbb0138-7fde-4e78-9b57-d25f162a485b",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "1e54f6c3-171a-4885-9b24-50573f45d6f1",
+			"id": "56d56258-c578-4a6d-a61c-e33d9d592c90",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "f9e8dfe2-95d5-488d-aa1f-421ad0af49d6",
+			"id": "22a696d4-05a6-4301-a444-6a7e2197e2cd",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "02494b8b-d0c9-40f8-81cf-429f726afe97",
+			"id": "9517de24-b62b-42df-863b-5fb105cc47cf",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "49c2318f-758d-4a47-8547-565ddabb7570",
+			"id": "b49ea4ee-79ee-45f4-b956-feba2ba99ed8",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "95242002-5b24-4a8b-8dfa-6e64077ad3b2",
+			"id": "79fae1d6-c434-4d36-9acd-406dbad53408",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "7bbfcd1f-479f-4d6a-bebc-5719c01380bd",
+			"id": "e7ab973d-fd03-4d8a-9c8b-a169778b4092",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "66435181-1fed-4f4d-91bf-0432b1df99e7",
+			"id": "60ce6d0e-f333-4e27-9b96-f7a2185c7cd7",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "2c0103f0-9798-4821-874a-c459efba9bfb",
+			"id": "63761bd5-552e-4b4e-998f-7552a7af6ff8",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "c441f8ca-9aa3-4116-b850-124117b5b15c",
+			"id": "a7a874ff-05ff-43d4-a8a4-75deed643544",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "4d59fce6-c871-4f71-9426-0c59870e3909",
+			"id": "0b58faf7-caaa-4fc5-bc6e-7ac9500317b2",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "9e3ce0c1-ffb2-4025-8a72-4360f970b2dd",
+			"id": "402be1a4-3859-4c47-8463-59adc96da8d5",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "8e1c8b3c-715e-4bd9-bec2-76e23ac897f4",
+			"id": "5797f6d4-dcbc-44df-b73f-4bc1184392b4",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "30532fbf-9b43-4782-b527-c272df8f4a63",
+			"id": "3e13aea5-dd5e-41b6-8b76-878f0764e443",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "6022f4d5-5ede-48d4-9ad6-763da6cf2c6a",
+			"id": "d291e805-f636-44d1-acd4-fb2b6603b523",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "51348a89-d870-4037-9197-2938da34ca9e",
+			"id": "f5153ba2-d58d-46e8-bb8a-f24cb1f2f649",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "1a93d2bc-b1a3-40bb-ba40-71074d3dfb00",
+			"id": "19951548-cc4d-4898-8950-d74a0070a0e6",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

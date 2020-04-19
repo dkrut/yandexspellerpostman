@@ -641,7 +641,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtmlFormatHtml Copy",
+											"name": "CorrectTextFormatPlain",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -668,7 +668,7 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?{{paramText}}={{testHtml}}&{{paramFormat}}={{formatHTML}}",
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?{{paramText}}={{testTextPart1}}&{{paramFormat}}={{formatPlain}}",
 													"host": [
 														"{{yandexSpellerJson}}"
 													],
@@ -678,11 +678,11 @@
 													"query": [
 														{
 															"key": "{{paramText}}",
-															"value": "{{testHtml}}"
+															"value": "{{testTextPart1}}"
 														},
 														{
 															"key": "{{paramFormat}}",
-															"value": "{{formatHTML}}"
+															"value": "{{formatPlain}}"
 														}
 													]
 												}
@@ -1094,12 +1094,600 @@
 							"item": [
 								{
 									"name": "WithoutOptionalParams",
-									"item": [],
+									"item": [
+										{
+											"name": "CorrectText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}} {{testTextPart2}}"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "RepeatText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CapitalizationError",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"1\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_CAPITALIZATION\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0].word === \"питер\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.include(\"Питер\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWIthDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"1\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0].word === \"цифр123ами\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtml",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"4\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error words'] = (jsonData[0].word === \"DOCTYPE\") && (jsonData[1].word === \"lang\") && (jsonData[2].word === \"ru\") && (jsonData[3].word === \"meta\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextSeveralRows}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"3\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonData[0].code === errorCode) && (jsonData[1].code === errorCode) && (jsonData[2].code === errorCode);",
+															"tests['Error line numbers'] = (jsonData[0].row === 0) && (jsonData[1].row === 1) && (jsonData[2].row === 2);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testErrorTextSeveralRows}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OneErrorText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "1133ecea-1286-482e-9c4d-be26fa91f7b3",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"1\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "6ac5cf5c-a877-4ba7-9982-27e6d13c532d",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0].pos === 15);",
+															"tests['Error line number'] = (jsonData[0].row === 0);",
+															"tests['Error column number'] = (jsonData[0].col === 15);",
+															"tests['Error word length'] = (jsonData[0].len === 6);",
+															"tests['Error word'] = (jsonData[0].word === \"мяхких\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.include(\"мягких\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithOneError}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "0b418a32-1e47-44a2-9278-5d85f20ec90f",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"2\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "b71d3fd3-9b69-4faf-a994-77da824b08e4",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0].pos === 3);",
+															"tests['Error line number'] = (jsonData[0].row === 0);",
+															"tests['Error column number'] = (jsonData[0].col === 3);",
+															"tests['Error word length'] = (jsonData[0].len === 5);",
+															"tests['Error word'] = (jsonData[0].word === \"выпий\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.include(\"выпей\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithFewErrors}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWithUrl",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"3\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode) && (jsonData[1].code === errorCode) && (jsonData[2].code === errorCode);",
+															"tests['Error word'] = (jsonData[0].word === \"ww\");",
+															"tests['Error word'] = (jsonData[1].word === \"yandx\");",
+															"tests['Error word'] = (jsonData[2].word === \"ru\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWithEmail",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"3\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode) && (jsonData[1].code === errorCode) && (jsonData[2].code === errorCode);",
+															"tests['Error word'] = (jsonData[0].word === \"emil\");",
+															"tests['Error word'] = (jsonData[1].word === \"yandx\");",
+															"tests['Error word'] = (jsonData[2].word === \"ru\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"event": [
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "4e7a745e-0a7b-4424-8854-38cb77f94655",
+												"id": "62157841-cba7-4fff-91c5-c87c5eeada5a",
 												"type": "text/javascript",
 												"exec": [
 													""
@@ -1109,7 +1697,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "c57417fe-573b-41ae-8e38-c042eed34ddf",
+												"id": "8d527338-3aaf-4781-a52a-85073b411a84",
 												"type": "text/javascript",
 												"exec": [
 													""
@@ -1122,7 +1710,543 @@
 								},
 								{
 									"name": "WithOptionalParams",
-									"item": [],
+									"item": [
+										{
+											"name": "CorrectHtmlFormatHtml",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatHTML}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextFormatPlain",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_CAPITALIZATION}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_DIGITS}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreUrls",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}+{{testTextEmail}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_URLS}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"1\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_FIND_REPEAT_WORDS}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}+{{testTextDigits}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords&IgnoreUrls",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"1\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}+{{testTextEmail}}+и+{{testTextUrl}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"1\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\")) + parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}+{{testTextDigits}}+{{testRepeatText}}+{{testTextEmail}}+и+{{testTextUrl}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "7b887cd6-a64a-4c2d-b70b-a39ad5393185",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "50bc24ae-0372-4bca-83e6-977997ec7625",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
 									"protocolProfileBehavior": {},
 									"_postman_isSubFolder": true
 								}
@@ -1378,187 +2502,187 @@
 	],
 	"variable": [
 		{
-			"id": "52dd9370-5c99-4af2-9c11-fe12d3b6b540",
+			"id": "bb539a2d-8b0b-4b51-abbb-ac21c8b8406c",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "ada9c2e3-b0e7-4d91-9a2b-9a532d272837",
+			"id": "6497b92f-cc0d-4372-9444-77304b040a8e",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "1f9510a4-951a-4269-a9da-e709ef03e7b6",
+			"id": "02096b38-c00f-4b6f-bf3f-8835e310eece",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "4890af70-80f1-450e-95bb-aa7d06dcd69d",
+			"id": "4d0753b5-c898-4cf0-b4e9-1bdddc1e8314",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "88193afc-237c-4892-81e7-21895a31451a",
+			"id": "1b76e890-37b0-493a-93e0-c938633356fc",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "492fe518-66ad-4e6a-b882-318ac3396f77",
+			"id": "ddb8bab0-42c7-4460-8c56-0d4b243b49e7",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "7de93111-67e3-4010-a4dc-3f6af38a7d0d",
+			"id": "bd36486c-173f-453c-ac96-52ae4ca6ca3d",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "346358c2-8cef-4586-97a5-46f1ea9817c1",
+			"id": "f706ef14-e1a1-44de-b0cc-551b097e5c91",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "c2d54624-e969-47e2-9cc9-4bb5749ffe11",
+			"id": "a4eae0ef-3673-475a-aab3-9e133cc3e3d7",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "7b3af9d3-e3c3-484f-940f-54f8ea17e256",
+			"id": "2b61fd9e-6d8a-4b51-ba7a-830d8d046409",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "97e08d82-226a-403e-a41d-a3d75af61cc7",
+			"id": "5efe74df-5c4e-44eb-a058-bfce07d039be",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "b272f63c-d900-4459-94d5-a04749003ce0",
+			"id": "d08b7d5e-0ab9-40f1-8b2d-f32e6682091b",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "31c2664b-f3ab-4e88-816f-8d51adcddf0e",
+			"id": "0d0affb4-8e92-4df2-9258-8e7414225fab",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "4097659b-dd72-46e3-92ba-fc7d98779469",
+			"id": "81ba0264-453f-4c73-8fa8-55cb208ab7c1",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "594787a3-8820-43b3-804c-ccab5b91ea6e",
+			"id": "bab40ccf-8320-40d1-9cb8-932b971084f7",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "c655002f-8cc0-46e4-9fb9-b48e1e1e6f55",
+			"id": "cacb2f3a-0244-4ee1-adb7-9772c4fb2652",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "4044231a-ccd5-47d5-a4ef-69a1785ec77d",
+			"id": "df384a5a-4b2e-46d9-ae77-778074c942a5",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "87c6f346-bd59-4dd3-8eff-a24feb64153f",
+			"id": "55efeebd-bfe6-4a48-8316-c51bb9ac7417",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "dc20e60f-bd24-47ec-92a2-35c9ad8f23f0",
+			"id": "448dfa54-3331-4c8f-8a35-2d66214f47f7",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "67647748-8e3d-4911-b629-8e314956f551",
+			"id": "e8412cda-7ad3-4362-a9db-d29ccf065556",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "6b5b0084-fe3b-4666-8c55-103871bea47d",
+			"id": "8bbbe6bb-a8cc-4329-a442-03db0f324a00",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "ed593a54-cbd1-468f-8bca-db7b90d20052",
+			"id": "7e83cf66-c320-4ea4-8829-7fbc4f237709",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "6b816434-cf1e-4066-9ee7-49df2c592bb6",
+			"id": "a87a5ab9-6996-4626-a72e-82ab8dd44c36",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "bb2e816c-14b2-4bc2-b623-e443346a8562",
+			"id": "3706366f-a87e-4226-ac75-860ceb813ccc",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "e38c30c2-5b3c-4f24-9fa0-a809caacdb52",
+			"id": "8498df11-69cc-46ff-b083-eaad9f1c3e07",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "760f42a9-3f87-4253-9575-651388cf7bf4",
+			"id": "a0fb8a94-8ab0-4da1-8a77-d8466b269d4a",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "2333e68e-09c3-4542-8ec0-1bf347b99497",
+			"id": "c03e1f7a-a20a-45a1-a060-0c9f2201db19",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "6c0baa7e-ed13-4817-8cef-0fa7f6f9abcc",
+			"id": "62b4bb45-bc78-4be1-9d10-466c85467aa4",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "383ea69e-7528-481e-b6c9-b053b6e50f9b",
+			"id": "82e641c4-f479-41d3-9adb-27f3c68ddb04",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "bb3a9319-0e46-45e4-a9c1-c561546916b1",
+			"id": "68d814e6-673b-4e3c-b618-d061e8078217",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "0dc91c19-cf2b-4ac2-9f69-8a41724f1282",
+			"id": "8b7fbe44-480b-4ce5-a1e8-741e2dba0bf4",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

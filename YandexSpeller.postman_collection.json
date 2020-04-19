@@ -641,6 +641,55 @@
 											"response": []
 										},
 										{
+											"name": "CorrectHtmlFormatPlain",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?{{paramText}}={{testHtml}}&{{paramFormat}}={{formatHTML}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatHTML}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
 											"name": "CorrectTextFormatPlain",
 											"event": [
 												{
@@ -1766,6 +1815,60 @@
 											"response": []
 										},
 										{
+											"name": "CorrectHtmlFormatPlain",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"0\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatHTML}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
 											"name": "CorrectTextFormatPlain",
 											"event": [
 												{
@@ -2502,187 +2605,187 @@
 	],
 	"variable": [
 		{
-			"id": "bb539a2d-8b0b-4b51-abbb-ac21c8b8406c",
+			"id": "29fee009-8513-4909-aa76-f919f784cb7a",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "6497b92f-cc0d-4372-9444-77304b040a8e",
+			"id": "8d23305b-140a-4153-b68a-05441c2ca7c2",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "02096b38-c00f-4b6f-bf3f-8835e310eece",
+			"id": "f42f9afc-a970-42f8-aa46-23cd12848c58",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "4d0753b5-c898-4cf0-b4e9-1bdddc1e8314",
+			"id": "82bc3368-898b-4e38-8d71-e2ff2346c891",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "1b76e890-37b0-493a-93e0-c938633356fc",
+			"id": "ffa29158-4893-4850-b504-f6ba5561d0f1",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "ddb8bab0-42c7-4460-8c56-0d4b243b49e7",
+			"id": "76b045e8-deed-4b20-9c60-b14e8c096e8d",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "bd36486c-173f-453c-ac96-52ae4ca6ca3d",
+			"id": "b6df207e-494f-47c6-8329-96d07d84edc9",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "f706ef14-e1a1-44de-b0cc-551b097e5c91",
+			"id": "682e6eca-8f52-4b44-a897-7e327d547cb5",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "a4eae0ef-3673-475a-aab3-9e133cc3e3d7",
+			"id": "40368d9c-9693-4cb3-a4d8-ac5eef5be93c",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "2b61fd9e-6d8a-4b51-ba7a-830d8d046409",
+			"id": "65e30021-f79e-459e-be12-95d20539189a",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "5efe74df-5c4e-44eb-a058-bfce07d039be",
+			"id": "416bacfa-95f5-4f9b-8726-37c4ad67bc73",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "d08b7d5e-0ab9-40f1-8b2d-f32e6682091b",
+			"id": "3b15a455-4568-4f4e-b16c-4e2634c274c0",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "0d0affb4-8e92-4df2-9258-8e7414225fab",
+			"id": "4320c6ce-f278-42a2-8512-f854815bfc0b",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "81ba0264-453f-4c73-8fa8-55cb208ab7c1",
+			"id": "6eecd136-3ff7-4191-91e6-5b1078df1f69",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "bab40ccf-8320-40d1-9cb8-932b971084f7",
+			"id": "24722932-edab-424b-9659-b8fbb3f998a9",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "cacb2f3a-0244-4ee1-adb7-9772c4fb2652",
+			"id": "e494a5df-b6e6-403f-9133-9fb769032db8",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "df384a5a-4b2e-46d9-ae77-778074c942a5",
+			"id": "dc2daab0-9b3f-4764-9ab1-255df4ae9498",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "55efeebd-bfe6-4a48-8316-c51bb9ac7417",
+			"id": "641bb303-863f-4e74-9288-0cfaeb701875",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "448dfa54-3331-4c8f-8a35-2d66214f47f7",
+			"id": "76e004ef-69b7-42a9-9fb1-0f2a11e1d99e",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "e8412cda-7ad3-4362-a9db-d29ccf065556",
+			"id": "a421e0a5-b387-4653-82ff-8a2bc99d6ed5",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "8bbbe6bb-a8cc-4329-a442-03db0f324a00",
+			"id": "b91a7612-32ae-46ed-a005-4ed3d2299870",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "7e83cf66-c320-4ea4-8829-7fbc4f237709",
+			"id": "4449afb1-bfbd-4e45-8a96-c6416b1ded94",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "a87a5ab9-6996-4626-a72e-82ab8dd44c36",
+			"id": "c320e066-3ec4-40a1-9b11-7403534854d9",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "3706366f-a87e-4226-ac75-860ceb813ccc",
+			"id": "6249bc52-3706-4e5c-a02b-ba676c81ffc1",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "8498df11-69cc-46ff-b083-eaad9f1c3e07",
+			"id": "e14cce9b-a8cf-4e49-8b1c-a2741f8cd5be",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "a0fb8a94-8ab0-4da1-8a77-d8466b269d4a",
+			"id": "3ce9ba06-c10c-4104-89fe-7e58519b7552",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "c03e1f7a-a20a-45a1-a060-0c9f2201db19",
+			"id": "5482f849-b41d-4e98-8c0d-d82ed614fa01",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "62b4bb45-bc78-4be1-9d10-466c85467aa4",
+			"id": "73abd24d-303e-4d84-9350-fe364f80fc20",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "82e641c4-f479-41d3-9adb-27f3c68ddb04",
+			"id": "d9e99c75-1cf5-4c3c-a2ed-b6778fd44ce6",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "68d814e6-673b-4e3c-b618-d061e8078217",
+			"id": "674d7679-3f1c-49d9-b2e8-8e7693cae8a2",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "8b7fbe44-480b-4ce5-a1e8-741e2dba0bf4",
+			"id": "38e0a4fb-8e86-4ac2-a2ed-011ccf838bc2",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

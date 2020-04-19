@@ -26,7 +26,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -71,7 +71,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -262,7 +262,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -599,7 +599,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -648,7 +648,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															"pm.environment.set(\"jsonDataLength\", \"4\");"
 														],
 														"type": "text/javascript"
 													}
@@ -668,7 +668,7 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?{{paramText}}={{testHtml}}&{{paramFormat}}={{formatHTML}}",
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}?{{paramText}}={{testHtml}}&{{paramFormat}}={{formatPlain}}",
 													"host": [
 														"{{yandexSpellerJson}}"
 													],
@@ -682,7 +682,7 @@
 														},
 														{
 															"key": "{{paramFormat}}",
-															"value": "{{formatHTML}}"
+															"value": "{{formatPlain}}"
 														}
 													]
 												}
@@ -697,7 +697,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -746,7 +746,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -795,7 +795,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -844,7 +844,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -948,8 +948,6 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");",
-															"",
 															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\"));",
 															"pm.environment.set(\"collectionOption\", collectionOption);"
 														],
@@ -1152,7 +1150,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -1200,7 +1198,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -1407,7 +1405,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -1768,7 +1766,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -1822,7 +1820,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															"pm.environment.set(\"jsonDataLength\", \"4\");"
 														],
 														"type": "text/javascript"
 													}
@@ -1851,7 +1849,7 @@
 														},
 														{
 															"key": "{{paramFormat}}",
-															"value": "{{formatHTML}}",
+															"value": "{{formatPlain}}",
 															"type": "text"
 														}
 													]
@@ -1876,7 +1874,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -1930,7 +1928,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -1984,7 +1982,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -2038,7 +2036,7 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");"
+															""
 														],
 														"type": "text/javascript"
 													}
@@ -2152,8 +2150,6 @@
 													"script": {
 														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"0\");",
-															"",
 															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\"));",
 															"pm.environment.set(\"collectionOption\", collectionOption);"
 														],
@@ -2356,12 +2352,6 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
-						},
-						{
-							"name": "Unsupported methods",
-							"item": [],
-							"protocolProfileBehavior": {},
-							"_postman_isSubFolder": true
 						}
 					],
 					"event": [
@@ -2495,12 +2485,6 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
-						},
-						{
-							"name": "Unsupported methods",
-							"item": [],
-							"protocolProfileBehavior": {},
-							"_postman_isSubFolder": true
 						}
 					],
 					"event": [
@@ -2538,7 +2522,7 @@
 						"exec": [
 							"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
 							"pm.environment.set(\"responseData\", \"json\");",
-							"pm.environment.set(\"requestResult\", \"200\");"
+							"pm.environment.set(\"jsonDataLength\", \"0\");"
 						]
 					}
 				},
@@ -2546,6 +2530,258 @@
 					"listen": "test",
 					"script": {
 						"id": "b6b8d4fc-028d-4987-aee6-5d39943cf1aa",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Other",
+			"item": [
+				{
+					"name": "ErrorMethodName",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
+								"exec": [
+									"pm.environment.set(\"requestResult\", \"404\");",
+									"pm.environment.set(\"responseErrorMethod\", \"Yandex.Speller API documentation can be found here: https://tech.yandex.ru/speller/\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
+								"exec": [
+									"pm.test(\"Body contains string 'Method not allowed'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{yandexSpellerJson}}/{{methodErrorName}}",
+							"host": [
+								"{{yandexSpellerJson}}"
+							],
+							"path": [
+								"{{methodErrorName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckTextWithoutParams",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
+								"exec": [
+									"pm.environment.set(\"jsonDataLength\", \"0\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+							"host": [
+								"{{yandexSpellerJson}}"
+							],
+							"path": [
+								"{{methodCheckText}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckTextsWithoutParams",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
+								"exec": [
+									"pm.environment.set(\"jsonDataLength\", \"0\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+							"host": [
+								"{{yandexSpellerJson}}"
+							],
+							"path": [
+								"{{methodCheckTexts}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUTrequest",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+								"exec": [
+									"pm.environment.set(\"requestResult\", \"405\");",
+									"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+								"exec": [
+									"pm.test(\"Body contains string 'Method not allowed'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\" : \"{{testTextPart1}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+							"host": [
+								"{{yandexSpellerJson}}"
+							],
+							"path": [
+								"{{methodCheckText}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETErequest",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+								"exec": [
+									"pm.environment.set(\"requestResult\", \"405\");",
+									"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+								"exec": [
+									"pm.test(\"Body contains string 'Method not allowed'\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\" : \"{{testTextPart1}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+							"host": [
+								"{{yandexSpellerJson}}"
+							],
+							"path": [
+								"{{methodCheckText}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e4f90f12-db34-4152-be75-637e470bf46a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "afe95b41-7995-43b2-9cbd-df11f09080ea",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2563,7 +2799,7 @@
 				"id": "ccfb0d2d-4ad9-4171-840a-54f06465ab2b",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.environment.set(\"requestResult\", \"200\");"
 				]
 			}
 		},
@@ -2578,214 +2814,215 @@
 					"    pm.response.to.have.status(requestResult);",
 					"});",
 					"",
-					"",
-					"var contentTypeHeader = pm.environment.get(\"contentTypeHeader\");",
-					"pm.test(\"Header. Content-Type is \" + contentTypeHeader, function () {",
-					"    pm.response.to.be.header(\"Content-Type\", contentTypeHeader);",
-					"});",
-					"",
-					"",
-					"var responseData = (pm.environment.get(\"responseData\"));",
-					"pm.test(\"Response is \" + responseData, function () {",
-					"    if (responseData === 'json') {",
-					"        pm.response.to.be.json;",
-					"    } if (responseData === 'xml') {",
-					"        pm.expect(xml2Json(responseBody)).to.exist;",
-					"}});",
+					"if (requestResult === 200) {",
+					"    var contentTypeHeader = pm.environment.get(\"contentTypeHeader\");",
+					"    pm.test(\"Header. Content-Type is \" + contentTypeHeader, function () {",
+					"       pm.response.to.be.header(\"Content-Type\", contentTypeHeader);",
+					"    });",
 					"",
 					"",
-					"var count = parseInt(pm.environment.get(\"jsonDataLength\"));",
-					"pm.test(\"Response json length is \" + count, function () {",
-					"    var jsonData = pm.response.json();",
-					"    pm.expect(jsonData.length).to.eql(count);",
-					"});"
+					"    var responseData = (pm.environment.get(\"responseData\"));",
+					"    pm.test(\"Response is \" + responseData, function () {",
+					"        if (responseData === 'json') {",
+					"            pm.response.to.be.json;",
+					"       } if (responseData === 'xml') {",
+					"           pm.expect(xml2Json(responseBody)).to.exist;",
+					"    }});",
+					"",
+					"",
+					"    var count = parseInt(pm.environment.get(\"jsonDataLength\"));",
+					"    pm.test(\"Response json length is \" + count, function () {",
+					"        var jsonData = pm.response.json();",
+					"        pm.expect(jsonData.length).to.eql(count);",
+					"    });",
+					"}"
 				]
 			}
 		}
 	],
 	"variable": [
 		{
-			"id": "29fee009-8513-4909-aa76-f919f784cb7a",
+			"id": "d2f77def-1e11-46bc-b5e0-afb1b453f767",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "8d23305b-140a-4153-b68a-05441c2ca7c2",
+			"id": "4145a830-62bd-4bce-bc43-d58b3defc8a8",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "f42f9afc-a970-42f8-aa46-23cd12848c58",
+			"id": "4a9ea173-26bd-4ec7-ba00-e031475e896f",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "82bc3368-898b-4e38-8d71-e2ff2346c891",
+			"id": "cec28629-9281-4a71-9956-895e2cd5601d",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "ffa29158-4893-4850-b504-f6ba5561d0f1",
+			"id": "cc3b011e-7f7c-447a-9be7-8c210cbc8c4d",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "76b045e8-deed-4b20-9c60-b14e8c096e8d",
+			"id": "befb074c-b3e8-42f4-9a24-c54eadae165a",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "b6df207e-494f-47c6-8329-96d07d84edc9",
+			"id": "ee9b0185-787e-4c1d-8dd7-2d3eb9c2848b",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "682e6eca-8f52-4b44-a897-7e327d547cb5",
+			"id": "a7c60522-be1f-481a-a60c-4c602c3de7a3",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "40368d9c-9693-4cb3-a4d8-ac5eef5be93c",
+			"id": "3c1ba90d-535b-43e1-bebc-655784c9a7ea",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "65e30021-f79e-459e-be12-95d20539189a",
+			"id": "77c00622-57b2-41ea-9305-613b3ee886bc",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "416bacfa-95f5-4f9b-8726-37c4ad67bc73",
+			"id": "7a79bd21-d0dc-4236-a34e-ce4548054598",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "3b15a455-4568-4f4e-b16c-4e2634c274c0",
+			"id": "386dabc9-c662-495f-a3bd-2a9289f0a03d",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "4320c6ce-f278-42a2-8512-f854815bfc0b",
+			"id": "540e9462-17ed-4503-90fc-eaab9998ae8d",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "6eecd136-3ff7-4191-91e6-5b1078df1f69",
+			"id": "b80fe675-9a72-4e07-85d6-406cd318387f",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "24722932-edab-424b-9659-b8fbb3f998a9",
+			"id": "657ac85d-7637-4f38-a32d-045a62809873",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "e494a5df-b6e6-403f-9133-9fb769032db8",
+			"id": "8f8903ae-15ef-4c4c-b765-11d86ffd249f",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "dc2daab0-9b3f-4764-9ab1-255df4ae9498",
+			"id": "6e2eccd5-7b44-4877-8055-23f35dccad7a",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "641bb303-863f-4e74-9288-0cfaeb701875",
+			"id": "7ee973d5-bbd2-411b-ac5a-3be5a243fdfb",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "76e004ef-69b7-42a9-9fb1-0f2a11e1d99e",
+			"id": "ddaf6718-d678-43fe-916e-b17b49234643",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "a421e0a5-b387-4653-82ff-8a2bc99d6ed5",
+			"id": "28d57230-704b-4f64-98db-a31e29683908",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "b91a7612-32ae-46ed-a005-4ed3d2299870",
+			"id": "348e3849-ccda-4651-91b9-da53b603bfde",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "4449afb1-bfbd-4e45-8a96-c6416b1ded94",
+			"id": "342492ec-41e7-45d8-a0df-e521263f2b4c",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "c320e066-3ec4-40a1-9b11-7403534854d9",
+			"id": "9a1e44df-9554-498d-8303-255389361650",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "6249bc52-3706-4e5c-a02b-ba676c81ffc1",
+			"id": "5eafec1d-d24a-4af5-9219-f86d5205d493",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "e14cce9b-a8cf-4e49-8b1c-a2741f8cd5be",
+			"id": "2d16ba37-b63e-4a50-8dc3-1f20a9162f7f",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "3ce9ba06-c10c-4104-89fe-7e58519b7552",
+			"id": "98b15f33-a69e-4838-a0e2-01e2a697d514",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "5482f849-b41d-4e98-8c0d-d82ed614fa01",
+			"id": "3aff01e9-0c5d-47be-b13a-e946dcd039bb",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "73abd24d-303e-4d84-9350-fe364f80fc20",
+			"id": "48183c8c-fa02-479b-b3e6-efcb1608eebd",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "d9e99c75-1cf5-4c3c-a2ed-b6778fd44ce6",
+			"id": "58535770-bb2e-4a01-807e-b0e4532a9fc8",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "674d7679-3f1c-49d9-b2e8-8e7693cae8a2",
+			"id": "354aa2b5-ee65-4798-a8dd-598f5db2cc25",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "38e0a4fb-8e86-4ac2-a2ed-011ccf838bc2",
+			"id": "7db6200b-ace3-441d-b4b7-d7b26924d938",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

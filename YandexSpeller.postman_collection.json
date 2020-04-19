@@ -2361,7 +2361,7 @@
 								"id": "5f044365-964f-47ae-b697-856d92af1f68",
 								"type": "text/javascript",
 								"exec": [
-									""
+									"pm.environment.set(\"jsonDataLength\", \"0\");"
 								]
 							}
 						},
@@ -2387,7 +2387,544 @@
 							"item": [
 								{
 									"name": "WithoutOptionalParams",
-									"item": [],
+									"item": [
+										{
+											"name": "CorrectText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextPart1}}&{{paramText}}={{testTextPart2}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart2}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "RepeatText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testRepeatText}}&{{paramText}}={{testRepeatText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CapitalizationError",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"2\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_CAPITALIZATION\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0][0].word === \"питер\") && (jsonData[1][0].word === \"питер\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.include(\"Питер\") && pm.expect(jsonData[1][0].s).to.include(\"Питер\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextCapitalization}}&{{paramText}}={{testTextCapitalization}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWIthDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"2\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0][0].word === \"цифр123ами\") && (jsonData[0][0].word === \"цифр123ами\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextDigits}}&{{paramText}}={{testTextDigits}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtml",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error words'] = (jsonData[0][0].word === \"DOCTYPE\") && (jsonData[0][1].word === \"lang\") && (jsonData[0][2].word === \"ru\") && (jsonData[0][3].word === \"meta\")",
+															"&& (jsonData[1][0].word === \"DOCTYPE\") && (jsonData[1][1].word === \"lang\") && (jsonData[1][2].word === \"ru\") && (jsonData[1][3].word === \"meta\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testHtml}}&{{paramText}}={{testHtml}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextSeveralRows}}&{{paramText}}={{testTextSeveralRows}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextSeveralRows}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextSeveralRows}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[0][1].code === errorCode) && (jsonData[0][2].code === errorCode)",
+															"&& (jsonData[1][0].code === errorCode) && (jsonData[1][1].code === errorCode) && (jsonData[1][2].code === errorCode);",
+															"tests['Error line numbers'] = (jsonData[0][0].row === 0) && (jsonData[0][1].row === 1) && (jsonData[0][2].row === 2)",
+															"&& (jsonData[1][0].row === 0) && (jsonData[1][1].row === 1) && (jsonData[1][2].row === 2);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testErrorTextSeveralRows}}&{{paramText}}={{testErrorTextSeveralRows}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testErrorTextSeveralRows}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testErrorTextSeveralRows}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OneErrorText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "1133ecea-1286-482e-9c4d-be26fa91f7b3",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "6ac5cf5c-a877-4ba7-9982-27e6d13c532d",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0][0].pos === 15) && (jsonData[1][0].pos === 15);",
+															"tests['Error line number'] = (jsonData[0][0].row === 0) && (jsonData[1][0].row === 0);",
+															"tests['Error column number'] = (jsonData[0][0].col === 15) && (jsonData[1][0].col === 15);",
+															"tests['Error word length'] = (jsonData[0][0].len === 6) && (jsonData[1][0].len === 6);",
+															"tests['Error word'] = (jsonData[0][0].word === \"мяхких\") && (jsonData[1][0].word === \"мяхких\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.include(\"мягких\") && pm.expect(jsonData[1][0].s).to.include(\"мягких\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextWithOneError}}&{{paramText}}={{testTextWithOneError}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithOneError}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithOneError}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "0b418a32-1e47-44a2-9278-5d85f20ec90f",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "b71d3fd3-9b69-4faf-a994-77da824b08e4",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0][0].pos === 3) && (jsonData[1][0].pos === 3);",
+															"tests['Error line number'] = (jsonData[0][0].row === 0) && (jsonData[1][0].row === 0);",
+															"tests['Error column number'] = (jsonData[0][0].col === 3) && (jsonData[1][0].col === 3);",
+															"tests['Error word length'] = (jsonData[0][0].len === 5) && (jsonData[1][0].len === 5);",
+															"tests['Error word'] = (jsonData[0][0].word === \"выпий\") && (jsonData[1][0].word === \"выпий\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.include(\"выпей\") && pm.expect(jsonData[1][0].s).to.include(\"выпей\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextWithFewErrors}}&{{paramText}}={{testTextWithFewErrors}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithFewErrors}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithFewErrors}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWithUrl&Email",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[0][1].code === errorCode) && (jsonData[0][2].code === errorCode) ",
+															"&& (jsonData[1][0].code === errorCode) && (jsonData[1][1].code === errorCode) && (jsonData[1][2].code === errorCode);",
+															"",
+															"tests['Error words'] = (jsonData[0][0].word === \"ww\") && (jsonData[0][1].word === \"yandx\") && (jsonData[0][2].word === \"ru\")",
+															"&& (jsonData[1][0].word === \"emil\") && (jsonData[1][1].word === \"yndex\") && (jsonData[1][2].word === \"ru\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextUrl}}&{{paramText}}={{testTextEmail}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"event": [
 										{
 											"listen": "prerequest",
@@ -2415,7 +2952,582 @@
 								},
 								{
 									"name": "WithOptionalParams",
-									"item": [],
+									"item": [
+										{
+											"name": "CorrectHtmlFormatHtml",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testHtml}}&{{paramText}}={{testHtml}}&{{paramFormat}}={{formatHTML}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatHTML}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtmlFormatPlain",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error words'] = (jsonData[0][0].word === \"DOCTYPE\") && (jsonData[0][1].word === \"lang\") && (jsonData[0][2].word === \"ru\") && (jsonData[0][3].word === \"meta\")",
+															"&& (jsonData[1][0].word === \"DOCTYPE\") && (jsonData[1][1].word === \"lang\") && (jsonData[1][2].word === \"ru\") && (jsonData[1][3].word === \"meta\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testHtml}}&{{paramText}}={{testHtml}}&{{paramFormat}}={{formatPlain}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextFormatPlain",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextPart1}}&{{paramText}}={{testTextPart2}}&{{paramFormat}}={{formatPlain}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart2}}"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextCapitalization}}&{{paramText}}={{testTextCapitalization}}&{{paramOptions}}={{option_IGNORE_CAPITALIZATION}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_CAPITALIZATION}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextDigits}}&{{paramText}}={{testTextDigits}}&{{paramOptions}}={{option_IGNORE_DIGITS}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_DIGITS}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreUrls",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextUrl}}&{{paramText}}={{testTextEmail}}&{{paramOptions}}={{option_IGNORE_URLS}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_URLS}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0][0].word === \"повтора\") && (jsonData[1][0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.eql([]) && pm.expect(jsonData[1][0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testRepeatText}}&{{paramText}}={{testRepeatText}}&{{paramOptions}}={{option_FIND_REPEAT_WORDS}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_FIND_REPEAT_WORDS}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextCapitalization}}&{{paramText}}={{testTextDigits}}&{{paramOptions}}={{collectionOption}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords&IgnoreUrls",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"3\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[1][0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[1][0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextEmail}}&{{paramText}}={{testRepeatText}}&{{paramText}}={{testTextUrl}}&{{paramOptions}}={{collectionOption}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"5\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\")) + parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[2][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[2][0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[2][0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}?{{paramText}}={{testTextCapitalization}}&{{paramText}}={{testTextDigits}}&{{paramText}}={{testRepeatText}}&{{paramText}}={{testTextEmail}}&{{paramText}}={{testTextUrl}}&{{paramOptions}}={{collectionOption}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"event": [
 										{
 											"listen": "prerequest",
@@ -2450,12 +3562,599 @@
 							"item": [
 								{
 									"name": "WithoutOptionalParams",
-									"item": [],
+									"item": [
+										{
+											"name": "CorrectText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart2}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "RepeatText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CapitalizationError",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"2\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_CAPITALIZATION\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0][0].word === \"питер\") && (jsonData[1][0].word === \"питер\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.include(\"Питер\") && pm.expect(jsonData[1][0].s).to.include(\"Питер\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWIthDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"2\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0][0].word === \"цифр123ами\") && (jsonData[0][0].word === \"цифр123ами\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtml",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error words'] = (jsonData[0][0].word === \"DOCTYPE\") && (jsonData[0][1].word === \"lang\") && (jsonData[0][2].word === \"ru\") && (jsonData[0][3].word === \"meta\")",
+															"&& (jsonData[1][0].word === \"DOCTYPE\") && (jsonData[1][1].word === \"lang\") && (jsonData[1][2].word === \"ru\") && (jsonData[1][3].word === \"meta\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextSeveralRows}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextSeveralRows}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[0][1].code === errorCode) && (jsonData[0][2].code === errorCode)",
+															"&& (jsonData[1][0].code === errorCode) && (jsonData[1][1].code === errorCode) && (jsonData[1][2].code === errorCode);",
+															"tests['Error line numbers'] = (jsonData[0][0].row === 0) && (jsonData[0][1].row === 1) && (jsonData[0][2].row === 2)",
+															"&& (jsonData[1][0].row === 0) && (jsonData[1][1].row === 1) && (jsonData[1][2].row === 2);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testErrorTextSeveralRows}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testErrorTextSeveralRows}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OneErrorText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "1133ecea-1286-482e-9c4d-be26fa91f7b3",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "6ac5cf5c-a877-4ba7-9982-27e6d13c532d",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0][0].pos === 15) && (jsonData[1][0].pos === 15);",
+															"tests['Error line number'] = (jsonData[0][0].row === 0) && (jsonData[1][0].row === 0);",
+															"tests['Error column number'] = (jsonData[0][0].col === 15) && (jsonData[1][0].col === 15);",
+															"tests['Error word length'] = (jsonData[0][0].len === 6) && (jsonData[1][0].len === 6);",
+															"tests['Error word'] = (jsonData[0][0].word === \"мяхких\") && (jsonData[1][0].word === \"мяхких\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.include(\"мягких\") && pm.expect(jsonData[1][0].s).to.include(\"мягких\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithOneError}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithOneError}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "0b418a32-1e47-44a2-9278-5d85f20ec90f",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "b71d3fd3-9b69-4faf-a994-77da824b08e4",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error position'] = (jsonData[0][0].pos === 3) && (jsonData[1][0].pos === 3);",
+															"tests['Error line number'] = (jsonData[0][0].row === 0) && (jsonData[1][0].row === 0);",
+															"tests['Error column number'] = (jsonData[0][0].col === 3) && (jsonData[1][0].col === 3);",
+															"tests['Error word length'] = (jsonData[0][0].len === 5) && (jsonData[1][0].len === 5);",
+															"tests['Error word'] = (jsonData[0][0].word === \"выпий\") && (jsonData[1][0].word === \"выпий\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.include(\"выпей\") && pm.expect(jsonData[1][0].s).to.include(\"выпей\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithFewErrors}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithFewErrors}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWithUrl&Email",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_UNKNOWN_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[0][1].code === errorCode) && (jsonData[0][2].code === errorCode) ",
+															"&& (jsonData[1][0].code === errorCode) && (jsonData[1][1].code === errorCode) && (jsonData[1][2].code === errorCode);",
+															"",
+															"tests['Error words'] = (jsonData[0][0].word === \"ww\") && (jsonData[0][1].word === \"yandx\") && (jsonData[0][2].word === \"ru\")",
+															"&& (jsonData[1][0].word === \"emil\") && (jsonData[1][1].word === \"yndex\") && (jsonData[1][2].word === \"ru\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"event": [
 										{
 											"listen": "prerequest",
 											"script": {
-												"id": "4e7a745e-0a7b-4424-8854-38cb77f94655",
+												"id": "62157841-cba7-4fff-91c5-c87c5eeada5a",
 												"type": "text/javascript",
 												"exec": [
 													""
@@ -2465,7 +4164,7 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "c57417fe-573b-41ae-8e38-c042eed34ddf",
+												"id": "8d527338-3aaf-4781-a52a-85073b411a84",
 												"type": "text/javascript",
 												"exec": [
 													""
@@ -2478,9 +4177,692 @@
 								},
 								{
 									"name": "WithOptionalParams",
-									"item": [],
+									"item": [
+										{
+											"name": "CorrectHtmlFormatHtml",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatHTML}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtmlFormatPlain",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error words'] = (jsonData[0][0].word === \"DOCTYPE\") && (jsonData[0][1].word === \"lang\") && (jsonData[0][2].word === \"ru\") && (jsonData[0][3].word === \"meta\")",
+															"&& (jsonData[1][0].word === \"DOCTYPE\") && (jsonData[1][1].word === \"lang\") && (jsonData[1][2].word === \"ru\") && (jsonData[1][3].word === \"meta\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextFormatPlain",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart2}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_CAPITALIZATION}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_DIGITS}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreUrls",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_URLS}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[0][0].code === errorCode) && (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[0][0].word === \"повтора\") && (jsonData[1][0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[0][0].s).to.eql([]) && pm.expect(jsonData[1][0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_FIND_REPEAT_WORDS}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords&IgnoreUrls",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"3\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[1][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[1][0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[1][0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"5\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\")) + parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = parseInt(pm.variables.get(\"ERROR_REPEAT_WORD\"));",
+															"",
+															"var jsonData = pm.response.json();",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonData[2][0].code === errorCode);",
+															"tests['Error word'] = (jsonData[2][0].word === \"повтора\");",
+															"tests['Speller result'] = pm.expect(jsonData[2][0].s).to.eql([]);"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckTexts}}"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "7b887cd6-a64a-4c2d-b70b-a39ad5393185",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "50bc24ae-0372-4bca-83e6-977997ec7625",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
 									"protocolProfileBehavior": {},
 									"_postman_isSubFolder": true
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f986c0cd-0c4a-4360-8e7f-a8a63ae61eb5",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c7e64d1e-e86b-4e05-aa5c-7a28e7ea5575",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
 								}
 							],
 							"protocolProfileBehavior": {},
@@ -2494,7 +4876,7 @@
 								"id": "5f044365-964f-47ae-b697-856d92af1f68",
 								"type": "text/javascript",
 								"exec": [
-									""
+									"pm.environment.set(\"jsonDataLength\", \"2\");"
 								]
 							}
 						},
@@ -2521,8 +4903,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
-							"pm.environment.set(\"responseData\", \"json\");",
-							"pm.environment.set(\"jsonDataLength\", \"0\");"
+							"pm.environment.set(\"responseData\", \"json\");"
 						]
 					}
 				},
@@ -2842,187 +5223,187 @@
 	],
 	"variable": [
 		{
-			"id": "d2f77def-1e11-46bc-b5e0-afb1b453f767",
+			"id": "aefecfe2-026e-47b0-9312-ebac4465e059",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "4145a830-62bd-4bce-bc43-d58b3defc8a8",
+			"id": "1b53fc24-b6e8-488d-8175-c70bdd544d2f",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "4a9ea173-26bd-4ec7-ba00-e031475e896f",
+			"id": "8ed05b45-2409-434a-9a18-2976fe1156f5",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "cec28629-9281-4a71-9956-895e2cd5601d",
+			"id": "2411dcb9-c4e9-4aeb-bcc1-f23ba7841e01",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "cc3b011e-7f7c-447a-9be7-8c210cbc8c4d",
+			"id": "c343109a-f32f-47b2-9526-2966ddacb299",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "befb074c-b3e8-42f4-9a24-c54eadae165a",
+			"id": "8d09b1b2-63b3-48d5-aaf7-c4400fb8f3db",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "ee9b0185-787e-4c1d-8dd7-2d3eb9c2848b",
+			"id": "bc4ecc89-9a98-4cda-b366-435a162bc29e",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "a7c60522-be1f-481a-a60c-4c602c3de7a3",
+			"id": "c7a33d56-4737-43c8-a40f-3d7c2d3a0c06",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "3c1ba90d-535b-43e1-bebc-655784c9a7ea",
+			"id": "7ce6c662-ac92-40db-af93-2e35c0b5d141",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "77c00622-57b2-41ea-9305-613b3ee886bc",
+			"id": "aeabfd09-9412-4d03-8729-6ecdf9f7c2e4",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "7a79bd21-d0dc-4236-a34e-ce4548054598",
+			"id": "391ff4ad-2cba-417f-ae24-a5b352433014",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "386dabc9-c662-495f-a3bd-2a9289f0a03d",
+			"id": "fec44d2a-6010-49c4-a74d-cefe4fe57f32",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "540e9462-17ed-4503-90fc-eaab9998ae8d",
+			"id": "7b8bb492-3ecb-4659-84a8-af3397681920",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "b80fe675-9a72-4e07-85d6-406cd318387f",
+			"id": "ea72a53e-f053-4da3-94d1-c73b2de0f55d",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "657ac85d-7637-4f38-a32d-045a62809873",
+			"id": "c0153acc-f2cb-4b3c-9795-363ab633d0dd",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "8f8903ae-15ef-4c4c-b765-11d86ffd249f",
+			"id": "14eb53ce-2bd6-49ff-819c-712eaa8e2f22",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "6e2eccd5-7b44-4877-8055-23f35dccad7a",
+			"id": "e7b76aa0-dbfb-40dc-bb9a-c7b87608db99",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "7ee973d5-bbd2-411b-ac5a-3be5a243fdfb",
+			"id": "0516fc26-528a-402c-84d8-b1757a38b66e",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "ddaf6718-d678-43fe-916e-b17b49234643",
+			"id": "b39ac756-9bad-43bc-a7d5-ab3b3407960d",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "28d57230-704b-4f64-98db-a31e29683908",
+			"id": "94bde034-b050-47be-a191-55b93d2b0b1f",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "348e3849-ccda-4651-91b9-da53b603bfde",
+			"id": "77bdf62a-1c55-4ecd-a056-e3271b6fe5a0",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "342492ec-41e7-45d8-a0df-e521263f2b4c",
+			"id": "6d91618d-ebdb-4424-aae5-608ec92e1851",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "9a1e44df-9554-498d-8303-255389361650",
+			"id": "fce99783-2aa0-41a8-9f1a-21e92611fc03",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "5eafec1d-d24a-4af5-9219-f86d5205d493",
+			"id": "bac943dc-e758-4778-9f44-a94038915d0f",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "2d16ba37-b63e-4a50-8dc3-1f20a9162f7f",
+			"id": "cc13382b-952c-494f-a412-81076d951e96",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "98b15f33-a69e-4838-a0e2-01e2a697d514",
+			"id": "848b27e6-1564-4571-a8e0-05d7764e4c28",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "3aff01e9-0c5d-47be-b13a-e946dcd039bb",
+			"id": "76d6ff03-172e-46c5-a86b-b123db4f8f4f",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "48183c8c-fa02-479b-b3e6-efcb1608eebd",
+			"id": "afa74daa-c3c8-4bed-b6e2-4be21ba0789d",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "58535770-bb2e-4a01-807e-b0e4532a9fc8",
+			"id": "581de425-69df-4d7b-934a-3dfe32437834",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "354aa2b5-ee65-4798-a8dd-598f5db2cc25",
+			"id": "5ab68fe0-5a11-4efc-a5af-ba26ec1dbd4b",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "7db6200b-ace3-441d-b4b7-d7b26924d938",
+			"id": "45580e3b-6049-47e0-bc1b-169240f9f797",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

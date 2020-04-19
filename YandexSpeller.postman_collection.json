@@ -4913,7 +4913,647 @@
 						"id": "b6b8d4fc-028d-4987-aee6-5d39943cf1aa",
 						"type": "text/javascript",
 						"exec": [
-							""
+							"var count = parseInt(pm.environment.get(\"jsonDataLength\"));",
+							"pm.test(\"Response json length is \" + count, function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(count);",
+							"});"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "XML",
+			"item": [
+				{
+					"name": "checkText",
+					"item": [
+						{
+							"name": "GET",
+							"item": [
+								{
+									"name": "WithoutOptionalParams",
+									"item": [
+										{
+											"name": "CorrectText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextPart1}} {{testTextPart2}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}} {{testTextPart2}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "RepeatText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testRepeatText}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CapitalizationError",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_CAPITALIZATION\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonObject['SpellResult'].error.$.code === errorCode);",
+															"tests['Error word'] = (jsonObject['SpellResult'].error.word === \"питер\");",
+															"tests['Speller result'] = pm.expect(jsonObject['SpellResult'].error.s).to.include(\"Питер\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextCapitalization}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWIthDigits",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_UNKNOWN_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonObject['SpellResult'].error.$.code === errorCode);",
+															"tests['Error word'] = (jsonObject['SpellResult'].error.word === \"цифр123ами\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextDigits}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtml",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Error word'] = (jsonObject['SpellResult'].error[0].word === \"DOCTYPE\") && (jsonObject['SpellResult'].error[1].word === \"lang\")",
+															"&& (jsonObject['SpellResult'].error[2].word === \"ru\") && (jsonObject['SpellResult'].error[3].word === \"meta\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testHtml}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextSeveralRows}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextSeveralRows}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsTextSeveralRows",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_UNKNOWN_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Errors code is ' + errorCode] = (jsonObject['SpellResult'].error[0].$.code === errorCode) && (jsonObject['SpellResult'].error[1].$.code === errorCode)",
+															"&& (jsonObject['SpellResult'].error[2].$.code === errorCode);",
+															"tests['Error line numbers'] = (jsonObject['SpellResult'].error[0].$.row === \"0\") && (jsonObject['SpellResult'].error[1].$.row === \"1\")",
+															"&& (jsonObject['SpellResult'].error[2].$.row === \"2\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testErrorTextSeveralRows}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testErrorTextSeveralRows}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OneErrorText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "1133ecea-1286-482e-9c4d-be26fa91f7b3",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "6ac5cf5c-a877-4ba7-9982-27e6d13c532d",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_UNKNOWN_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonObject['SpellResult'].error.$.code === errorCode);",
+															"tests['Error position'] = (jsonObject['SpellResult'].error.$.pos === \"15\");",
+															"tests['Error line number'] = (jsonObject['SpellResult'].error.$.row === \"0\");",
+															"tests['Error column number'] = (jsonObject['SpellResult'].error.$.col === \"15\");",
+															"tests['Error word length'] = (jsonObject['SpellResult'].error.$.len === \"6\");",
+															"tests['Error word'] = (jsonObject['SpellResult'].error.word === \"мяхких\");",
+															"tests['Speller result'] = pm.expect(jsonObject['SpellResult'].error.s).to.include(\"мягких\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextWithOneError}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithOneError}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "FewErrorsText",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "0b418a32-1e47-44a2-9278-5d85f20ec90f",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "b71d3fd3-9b69-4faf-a994-77da824b08e4",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_UNKNOWN_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Error count is 2'] = (jsonObject['SpellResult'].error.length === 2);",
+															"tests['Error code is ' + errorCode] = (jsonObject['SpellResult'].error[0].$.code === errorCode);",
+															"tests['Error word'] = (jsonObject['SpellResult'].error[0].word === \"выпий\");",
+															"tests['Speller result'] = pm.expect(jsonObject['SpellResult'].error[0].s).to.include(\"выпей\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextWithFewErrors}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextWithFewErrors}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWithUrl",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_UNKNOWN_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonObject['SpellResult'].error[0].$.code === errorCode) && (jsonObject['SpellResult'].error[1].$.code === errorCode)",
+															"&& (jsonObject['SpellResult'].error[2].$.code === errorCode);",
+															"tests['Error word'] = (jsonObject['SpellResult'].error[0].word === \"ww\") && (jsonObject['SpellResult'].error[1].word === \"yandx\")",
+															"&& (jsonObject['SpellResult'].error[2].word === \"ru\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextUrl}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "TextWithEmail",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_UNKNOWN_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Error code is ' + errorCode] = (jsonObject['SpellResult'].error[0].$.code === errorCode) && (jsonObject['SpellResult'].error[1].$.code === errorCode)",
+															"&& (jsonObject['SpellResult'].error[2].$.code === errorCode);",
+															"tests['Error word'] = (jsonObject['SpellResult'].error[0].word === \"emil\") && (jsonObject['SpellResult'].error[1].word === \"yndex\")",
+															"&& (jsonObject['SpellResult'].error[2].word === \"ru\");"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextEmail}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextEmail}}"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "62157841-cba7-4fff-91c5-c87c5eeada5a",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "8d527338-3aaf-4781-a52a-85073b411a84",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"protocolProfileBehavior": {},
+									"_postman_isSubFolder": true
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5f044365-964f-47ae-b697-856d92af1f68",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"rootElement\", \"<SpellResult/>\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b63c9bb0-6585-4b7b-b6a7-abf61cc49bcd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bad824b9-5783-420b-a069-07233120c38c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"contentTypeHeader\", \"text/xml; charset=utf-8\");",
+							"pm.environment.set(\"responseData\", \"xml\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6b8d4fc-028d-4987-aee6-5d39943cf1aa",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"rootElement\"));",
+							"});"
 						]
 					}
 				}
@@ -4974,7 +5614,8 @@
 								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
 								"exec": [
 									"pm.environment.set(\"jsonDataLength\", \"0\");",
-									""
+									"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
+									"pm.environment.set(\"responseData\", \"json\");"
 								],
 								"type": "text/javascript"
 							}
@@ -5014,7 +5655,8 @@
 								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
 								"exec": [
 									"pm.environment.set(\"jsonDataLength\", \"0\");",
-									""
+									"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
+									"pm.environment.set(\"responseData\", \"json\");"
 								],
 								"type": "text/javascript"
 							}
@@ -5146,6 +5788,17 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "йцу",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			],
 			"event": [
@@ -5209,13 +5862,6 @@
 					"       } if (responseData === 'xml') {",
 					"           pm.expect(xml2Json(responseBody)).to.exist;",
 					"    }});",
-					"",
-					"",
-					"    var count = parseInt(pm.environment.get(\"jsonDataLength\"));",
-					"    pm.test(\"Response json length is \" + count, function () {",
-					"        var jsonData = pm.response.json();",
-					"        pm.expect(jsonData.length).to.eql(count);",
-					"    });",
 					"}"
 				]
 			}
@@ -5223,187 +5869,193 @@
 	],
 	"variable": [
 		{
-			"id": "aefecfe2-026e-47b0-9312-ebac4465e059",
+			"id": "7872573a-1a6c-4e7e-9e5f-5e02dcea447f",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "1b53fc24-b6e8-488d-8175-c70bdd544d2f",
+			"id": "04a37ace-a7fa-42ac-9305-8a6fb367ec5b",
+			"key": "yandexSpellerXml",
+			"value": "http://speller.yandex.net/services/spellservice",
+			"type": "string"
+		},
+		{
+			"id": "46972ac7-0ba1-43ee-bfb9-55f8be59031e",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "8ed05b45-2409-434a-9a18-2976fe1156f5",
+			"id": "e4819dbc-d132-4315-ae3a-56a0c44946ff",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "2411dcb9-c4e9-4aeb-bcc1-f23ba7841e01",
+			"id": "a2503b64-38b3-4fb8-8de4-01ebeecc1237",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "c343109a-f32f-47b2-9526-2966ddacb299",
+			"id": "4e66e2dd-43a7-4884-8899-44978c799655",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "8d09b1b2-63b3-48d5-aaf7-c4400fb8f3db",
+			"id": "1078a5f7-b94a-4549-8ff4-2a6d33600d10",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "bc4ecc89-9a98-4cda-b366-435a162bc29e",
+			"id": "f610af32-3ca9-40aa-b850-b2b8b1837e3b",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "c7a33d56-4737-43c8-a40f-3d7c2d3a0c06",
+			"id": "b594d8a8-e30e-438b-9bb8-23a7f310554a",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "7ce6c662-ac92-40db-af93-2e35c0b5d141",
+			"id": "2567e408-9105-4620-93f2-d482d50c5496",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "aeabfd09-9412-4d03-8729-6ecdf9f7c2e4",
+			"id": "a0253f21-7d33-4afc-a9af-31c19bbab1c3",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "391ff4ad-2cba-417f-ae24-a5b352433014",
+			"id": "0b623a24-a6dc-4a2b-bf01-d3e6b071dc2a",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "fec44d2a-6010-49c4-a74d-cefe4fe57f32",
+			"id": "fdc1b910-c0bb-44ea-ba48-69cc51b9d3d8",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "7b8bb492-3ecb-4659-84a8-af3397681920",
+			"id": "28bcb1a5-bae1-478f-b8aa-da00c66f3f80",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "ea72a53e-f053-4da3-94d1-c73b2de0f55d",
+			"id": "71040ef8-8c0e-420f-a5b5-eb4a4ac90833",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "c0153acc-f2cb-4b3c-9795-363ab633d0dd",
+			"id": "cd370738-2be3-4db3-85bf-9027a49ab38d",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "14eb53ce-2bd6-49ff-819c-712eaa8e2f22",
+			"id": "4bbbc7d6-c410-4804-9b49-c88bafe5c9eb",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "e7b76aa0-dbfb-40dc-bb9a-c7b87608db99",
+			"id": "3e51d566-547f-4bb3-a932-aaf478224013",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "0516fc26-528a-402c-84d8-b1757a38b66e",
+			"id": "db9200d6-b16b-404c-a37c-a3043d715718",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "b39ac756-9bad-43bc-a7d5-ab3b3407960d",
+			"id": "a7543cae-5b6c-4178-b407-7e742a4d5514",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "94bde034-b050-47be-a191-55b93d2b0b1f",
+			"id": "5eb8c965-d31b-4c20-a6ae-6a99648fbb27",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "77bdf62a-1c55-4ecd-a056-e3271b6fe5a0",
+			"id": "7f876420-f292-40c5-a58c-51750f626f8f",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "6d91618d-ebdb-4424-aae5-608ec92e1851",
+			"id": "3ff545f5-a009-4b16-8dd9-594a25df5069",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "fce99783-2aa0-41a8-9f1a-21e92611fc03",
+			"id": "3eddc3de-2bdf-4bee-ad7c-78024decefe5",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "bac943dc-e758-4778-9f44-a94038915d0f",
+			"id": "3906425f-9ae4-459e-99ca-afa57047f5d5",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "cc13382b-952c-494f-a412-81076d951e96",
+			"id": "8e096339-01e4-465c-9045-02fc6774be27",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "848b27e6-1564-4571-a8e0-05d7764e4c28",
+			"id": "e599d736-e7bc-490e-8776-d3fb4750199d",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "76d6ff03-172e-46c5-a86b-b123db4f8f4f",
+			"id": "c9ebe552-8bf7-45c1-bb34-2e25895535e1",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "afa74daa-c3c8-4bed-b6e2-4be21ba0789d",
+			"id": "d48b60e0-c7ff-4ffc-9525-173bbadc42af",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "581de425-69df-4d7b-934a-3dfe32437834",
+			"id": "99706ce2-925c-489a-bb29-af9470907cff",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "5ab68fe0-5a11-4efc-a5af-ba26ec1dbd4b",
+			"id": "5366fe11-e428-40a2-b674-7e671fb90a78",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "45580e3b-6049-47e0-bc1b-169240f9f797",
+			"id": "032a3ce1-5db8-43db-8fc6-c7808869c556",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

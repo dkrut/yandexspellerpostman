@@ -5788,17 +5788,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "йцу",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
 				}
 			],
 			"event": [
@@ -5869,193 +5858,193 @@
 	],
 	"variable": [
 		{
-			"id": "7872573a-1a6c-4e7e-9e5f-5e02dcea447f",
+			"id": "3fc7bff5-5c0d-4aad-8812-705d8c198c04",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "04a37ace-a7fa-42ac-9305-8a6fb367ec5b",
+			"id": "601ece45-f4d5-471f-8333-d1a4e5775f03",
 			"key": "yandexSpellerXml",
 			"value": "http://speller.yandex.net/services/spellservice",
 			"type": "string"
 		},
 		{
-			"id": "46972ac7-0ba1-43ee-bfb9-55f8be59031e",
+			"id": "4ad375da-a1aa-4e2d-9e7f-964678029aa0",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "e4819dbc-d132-4315-ae3a-56a0c44946ff",
+			"id": "38473ad7-ca9c-4059-9495-18d253d2512e",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "a2503b64-38b3-4fb8-8de4-01ebeecc1237",
+			"id": "731ea489-04ed-43ae-918d-e412e9f73c58",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "4e66e2dd-43a7-4884-8899-44978c799655",
+			"id": "afd4b6aa-ca73-4725-bdda-67192506a761",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "1078a5f7-b94a-4549-8ff4-2a6d33600d10",
+			"id": "7d8008b3-5c74-4805-8762-66d9d7382744",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "f610af32-3ca9-40aa-b850-b2b8b1837e3b",
+			"id": "6fa4e6aa-18fb-4516-a10e-85672afe0504",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "b594d8a8-e30e-438b-9bb8-23a7f310554a",
+			"id": "5d32037b-cafa-41af-938f-e66004d8eaf6",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "2567e408-9105-4620-93f2-d482d50c5496",
+			"id": "974ec9ea-b9f4-4d1f-b536-e9fe91d37c09",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "a0253f21-7d33-4afc-a9af-31c19bbab1c3",
+			"id": "a9f924d5-6921-418f-aeb4-8458ef778324",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "0b623a24-a6dc-4a2b-bf01-d3e6b071dc2a",
+			"id": "273e363f-49cb-4835-aca4-d8942ef6c4e9",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "fdc1b910-c0bb-44ea-ba48-69cc51b9d3d8",
+			"id": "85fb501e-6321-4bb7-89a9-8f7a435cec95",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "28bcb1a5-bae1-478f-b8aa-da00c66f3f80",
+			"id": "6aa0c6a5-f894-433d-b0c8-50af068fb9de",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "71040ef8-8c0e-420f-a5b5-eb4a4ac90833",
+			"id": "57190c93-f6a4-4a6a-91e4-ffdbf0e45ef4",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "cd370738-2be3-4db3-85bf-9027a49ab38d",
+			"id": "d1a578e2-5a2e-4943-9033-8545b4241a88",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "4bbbc7d6-c410-4804-9b49-c88bafe5c9eb",
+			"id": "c4fee869-95e6-457a-a9c7-6dda06cf0b5a",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "3e51d566-547f-4bb3-a932-aaf478224013",
+			"id": "a81e4158-3775-4f35-ab90-b3b659c2e1ac",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "db9200d6-b16b-404c-a37c-a3043d715718",
+			"id": "8f3ee70c-2dd9-4da2-a20f-d6029d453738",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "a7543cae-5b6c-4178-b407-7e742a4d5514",
+			"id": "82440ac0-475c-41d6-820f-f74d4c35e28b",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "5eb8c965-d31b-4c20-a6ae-6a99648fbb27",
+			"id": "1c1c045d-a5db-4add-bbd3-5ddfb165f4ac",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "7f876420-f292-40c5-a58c-51750f626f8f",
+			"id": "f726757f-f2ee-444b-a51b-563df4df8202",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "3ff545f5-a009-4b16-8dd9-594a25df5069",
+			"id": "e6aeade5-9a6e-4bc6-a55a-db221dc01018",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "3eddc3de-2bdf-4bee-ad7c-78024decefe5",
+			"id": "926b2511-21b8-44aa-8586-908db0380e41",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "3906425f-9ae4-459e-99ca-afa57047f5d5",
+			"id": "90c07ea7-bb45-4da7-bc97-dd7a3a65aa95",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "8e096339-01e4-465c-9045-02fc6774be27",
+			"id": "15f08e67-b152-4895-8205-296f93c61d05",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "e599d736-e7bc-490e-8776-d3fb4750199d",
+			"id": "6b5772f3-a499-4576-bb09-8e8034b598e4",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "c9ebe552-8bf7-45c1-bb34-2e25895535e1",
+			"id": "f15efc52-95d8-4ddb-8f14-a0dd55e7cfa2",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "d48b60e0-c7ff-4ffc-9525-173bbadc42af",
+			"id": "c7814745-b604-4cf1-98c2-d8ef78682842",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "99706ce2-925c-489a-bb29-af9470907cff",
+			"id": "a7248abf-3b8b-4eeb-86a1-548b56e9b16f",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "5366fe11-e428-40a2-b674-7e671fb90a78",
+			"id": "2230da00-c6eb-4ed9-a932-1fb55e06f09b",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "032a3ce1-5db8-43db-8fc6-c7808869c556",
+			"id": "02de24e2-b733-498a-8fbe-c76b1c1470df",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

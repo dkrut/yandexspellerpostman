@@ -16,10 +16,10 @@
 							"name": "GET",
 							"item": [
 								{
-									"name": "WithoutOptionalParams",
+									"name": "WithoutOptionalParams_JCTG",
 									"item": [
 										{
-											"name": "CorrectText",
+											"name": "CorrectText_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -64,7 +64,7 @@
 											"response": []
 										},
 										{
-											"name": "RepeatText",
+											"name": "RepeatText_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -109,7 +109,7 @@
 											"response": []
 										},
 										{
-											"name": "CapitalizationError",
+											"name": "CapitalizationError_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -159,7 +159,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWIthDigits",
+											"name": "TextWIthDigits_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -208,7 +208,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtml",
+											"name": "CorrectHtml_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -255,7 +255,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextSeveralRows",
+											"name": "CorrectTextSeveralRows_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -300,7 +300,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsTextSeveralRows",
+											"name": "FewErrorsTextSeveralRows_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -349,7 +349,7 @@
 											"response": []
 										},
 										{
-											"name": "OneErrorText",
+											"name": "OneErrorText_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -404,7 +404,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsText",
+											"name": "FewErrorsText_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -459,7 +459,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithUrl",
+											"name": "TextWithUrl_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -511,7 +511,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithEmail",
+											"name": "TextWithEmail_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -589,10 +589,10 @@
 									"_postman_isSubFolder": true
 								},
 								{
-									"name": "WithOptionalParams",
+									"name": "WithOptionalParams_JCTG",
 									"item": [
 										{
-											"name": "CorrectHtmlFormatHtml",
+											"name": "CorrectHtmlFormatHtml_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -641,7 +641,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtmlFormatPlain",
+											"name": "CorrectHtmlFormatPlain_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -690,7 +690,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextFormatPlain",
+											"name": "CorrectTextFormatPlain_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -739,7 +739,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization",
+											"name": "OptionIgnoreCapitalization_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -788,7 +788,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreDigits",
+											"name": "OptionIgnoreDigits_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -837,7 +837,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreUrls",
+											"name": "OptionIgnoreUrls_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -886,7 +886,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords",
+											"name": "OptionFindRepeatWords_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -941,7 +941,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -991,7 +991,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords&IgnoreUrls",
+											"name": "OptionFindRepeatWords&IgnoreUrls_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1049,7 +1049,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls_JCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1140,10 +1140,10 @@
 							"name": "POST",
 							"item": [
 								{
-									"name": "WithoutOptionalParams",
+									"name": "WithoutOptionalParams_JCTP",
 									"item": [
 										{
-											"name": "CorrectText",
+											"name": "CorrectText_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1191,7 +1191,7 @@
 											"response": []
 										},
 										{
-											"name": "RepeatText",
+											"name": "RepeatText_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1240,7 +1240,7 @@
 											"response": []
 										},
 										{
-											"name": "CapitalizationError",
+											"name": "CapitalizationError_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1294,7 +1294,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWIthDigits",
+											"name": "TextWIthDigits_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1347,7 +1347,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtml",
+											"name": "CorrectHtml_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1398,7 +1398,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextSeveralRows",
+											"name": "CorrectTextSeveralRows_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1447,7 +1447,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsTextSeveralRows",
+											"name": "FewErrorsTextSeveralRows_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1500,7 +1500,7 @@
 											"response": []
 										},
 										{
-											"name": "OneErrorText",
+											"name": "OneErrorText_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1559,7 +1559,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsText",
+											"name": "FewErrorsText_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1618,7 +1618,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithUrl",
+											"name": "TextWithUrl_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1674,7 +1674,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithEmail",
+											"name": "TextWithEmail_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1756,10 +1756,10 @@
 									"_postman_isSubFolder": true
 								},
 								{
-									"name": "WithOptionalParams",
+									"name": "WithOptionalParams_JCTP",
 									"item": [
 										{
-											"name": "CorrectHtmlFormatHtml",
+											"name": "CorrectHtmlFormatHtml_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1813,7 +1813,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtmlFormatPlain",
+											"name": "CorrectHtmlFormatPlain_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1867,7 +1867,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextFormatPlain",
+											"name": "CorrectTextFormatPlain_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1921,7 +1921,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization",
+											"name": "OptionIgnoreCapitalization_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -1975,7 +1975,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreDigits",
+											"name": "OptionIgnoreDigits_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2029,7 +2029,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreUrls",
+											"name": "OptionIgnoreUrls_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2083,7 +2083,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords",
+											"name": "OptionFindRepeatWords_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2143,7 +2143,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2198,7 +2198,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords&IgnoreUrls",
+											"name": "OptionFindRepeatWords&IgnoreUrls_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2261,7 +2261,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy_JCTP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2386,10 +2386,10 @@
 							"name": "GET",
 							"item": [
 								{
-									"name": "WithoutOptionalParams",
+									"name": "WithoutOptionalParams_JCTsG",
 									"item": [
 										{
-											"name": "CorrectText",
+											"name": "CorrectText_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2438,7 +2438,7 @@
 											"response": []
 										},
 										{
-											"name": "RepeatText",
+											"name": "RepeatText_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2487,7 +2487,7 @@
 											"response": []
 										},
 										{
-											"name": "CapitalizationError",
+											"name": "CapitalizationError_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2541,7 +2541,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWIthDigits",
+											"name": "TextWIthDigits_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2594,7 +2594,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtml",
+											"name": "CorrectHtml_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2646,7 +2646,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextSeveralRows",
+											"name": "CorrectTextSeveralRows_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2695,7 +2695,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsTextSeveralRows",
+											"name": "FewErrorsTextSeveralRows_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2750,7 +2750,7 @@
 											"response": []
 										},
 										{
-											"name": "OneErrorText",
+											"name": "OneErrorText_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2809,7 +2809,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsText",
+											"name": "FewErrorsText_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2868,7 +2868,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithUrl&Email",
+											"name": "TextWithUrl&Email_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -2951,10 +2951,10 @@
 									"_postman_isSubFolder": true
 								},
 								{
-									"name": "WithOptionalParams",
+									"name": "WithOptionalParams_JCTsG",
 									"item": [
 										{
-											"name": "CorrectHtmlFormatHtml",
+											"name": "CorrectHtmlFormatHtml_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3007,7 +3007,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtmlFormatPlain",
+											"name": "CorrectHtmlFormatPlain_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3063,7 +3063,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextFormatPlain",
+											"name": "CorrectTextFormatPlain_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3116,7 +3116,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization",
+											"name": "OptionIgnoreCapitalization_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3169,7 +3169,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreDigits",
+											"name": "OptionIgnoreDigits_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3222,7 +3222,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreUrls",
+											"name": "OptionIgnoreUrls_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3275,7 +3275,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords",
+											"name": "OptionFindRepeatWords_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3334,7 +3334,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3388,7 +3388,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords&IgnoreUrls",
+											"name": "OptionFindRepeatWords&IgnoreUrls_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3454,7 +3454,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls_JCTsG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3561,10 +3561,10 @@
 							"name": "POST",
 							"item": [
 								{
-									"name": "WithoutOptionalParams",
+									"name": "WithoutOptionalParams_JCTsP",
 									"item": [
 										{
-											"name": "CorrectText",
+											"name": "CorrectText_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3618,7 +3618,7 @@
 											"response": []
 										},
 										{
-											"name": "RepeatText",
+											"name": "RepeatText_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3672,7 +3672,7 @@
 											"response": []
 										},
 										{
-											"name": "CapitalizationError",
+											"name": "CapitalizationError_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3731,7 +3731,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWIthDigits",
+											"name": "TextWIthDigits_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3789,7 +3789,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtml",
+											"name": "CorrectHtml_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3846,7 +3846,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextSeveralRows",
+											"name": "CorrectTextSeveralRows_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3900,7 +3900,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsTextSeveralRows",
+											"name": "FewErrorsTextSeveralRows_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -3960,7 +3960,7 @@
 											"response": []
 										},
 										{
-											"name": "OneErrorText",
+											"name": "OneErrorText_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4024,7 +4024,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsText",
+											"name": "FewErrorsText_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4088,7 +4088,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithUrl&Email",
+											"name": "TextWithUrl&Email_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4176,10 +4176,10 @@
 									"_postman_isSubFolder": true
 								},
 								{
-									"name": "WithOptionalParams",
+									"name": "WithOptionalParams_JCTsP",
 									"item": [
 										{
-											"name": "CorrectHtmlFormatHtml",
+											"name": "CorrectHtmlFormatHtml_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4238,7 +4238,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtmlFormatPlain",
+											"name": "CorrectHtmlFormatPlain_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4300,7 +4300,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextFormatPlain",
+											"name": "CorrectTextFormatPlain_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4359,7 +4359,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization",
+											"name": "OptionIgnoreCapitalization_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4418,7 +4418,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreDigits",
+											"name": "OptionIgnoreDigits_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4477,7 +4477,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreUrls",
+											"name": "OptionIgnoreUrls_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4536,7 +4536,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords",
+											"name": "OptionFindRepeatWords_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4601,7 +4601,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4661,7 +4661,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionFindRepeatWords&IgnoreUrls",
+											"name": "OptionFindRepeatWords&IgnoreUrls_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4734,7 +4734,7 @@
 											"response": []
 										},
 										{
-											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls Copy",
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls_JCTsP",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4934,10 +4934,10 @@
 							"name": "GET",
 							"item": [
 								{
-									"name": "WithoutOptionalParams",
+									"name": "WithoutOptionalParams__XCTG",
 									"item": [
 										{
-											"name": "CorrectText",
+											"name": "CorrectText_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -4982,7 +4982,7 @@
 											"response": []
 										},
 										{
-											"name": "RepeatText",
+											"name": "RepeatText_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5027,7 +5027,7 @@
 											"response": []
 										},
 										{
-											"name": "CapitalizationError",
+											"name": "CapitalizationError_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5077,7 +5077,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWIthDigits",
+											"name": "TextWIthDigits_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5126,7 +5126,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectHtml",
+											"name": "CorrectHtml_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5174,7 +5174,7 @@
 											"response": []
 										},
 										{
-											"name": "CorrectTextSeveralRows",
+											"name": "CorrectTextSeveralRows_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5219,7 +5219,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsTextSeveralRows",
+											"name": "FewErrorsTextSeveralRows_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5270,7 +5270,7 @@
 											"response": []
 										},
 										{
-											"name": "OneErrorText",
+											"name": "OneErrorText_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5324,7 +5324,7 @@
 											"response": []
 										},
 										{
-											"name": "FewErrorsText",
+											"name": "FewErrorsText_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5375,7 +5375,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithUrl",
+											"name": "TextWithUrl_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5426,7 +5426,7 @@
 											"response": []
 										},
 										{
-											"name": "TextWithEmail",
+											"name": "TextWithEmail_XCTG",
 											"event": [
 												{
 													"listen": "prerequest",
@@ -5858,193 +5858,193 @@
 	],
 	"variable": [
 		{
-			"id": "3fc7bff5-5c0d-4aad-8812-705d8c198c04",
+			"id": "4a84a628-563e-42fa-9d8c-634287032df3",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "601ece45-f4d5-471f-8333-d1a4e5775f03",
+			"id": "46fbfcba-ae41-4122-870b-7939a0a42e71",
 			"key": "yandexSpellerXml",
 			"value": "http://speller.yandex.net/services/spellservice",
 			"type": "string"
 		},
 		{
-			"id": "4ad375da-a1aa-4e2d-9e7f-964678029aa0",
+			"id": "65727dc7-d7ff-4997-9a75-b039a69ce0ea",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "38473ad7-ca9c-4059-9495-18d253d2512e",
+			"id": "e20c2d43-5054-4310-9cf1-20da8e03f268",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "731ea489-04ed-43ae-918d-e412e9f73c58",
+			"id": "f74c401a-70f6-46ca-986c-67959c60587e",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "afd4b6aa-ca73-4725-bdda-67192506a761",
+			"id": "9ca2ce4a-59e7-437d-9212-b06706818a5b",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "7d8008b3-5c74-4805-8762-66d9d7382744",
+			"id": "800fcc1f-6ffd-4f05-a8ba-5367c34bd3b7",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "6fa4e6aa-18fb-4516-a10e-85672afe0504",
+			"id": "e9cd2b56-0e6b-4cd1-b13a-c008e6f38a5f",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "5d32037b-cafa-41af-938f-e66004d8eaf6",
+			"id": "1f35c52d-071d-491f-bfeb-c2c42ad86e17",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "974ec9ea-b9f4-4d1f-b536-e9fe91d37c09",
+			"id": "0b39b40d-7a8e-432d-8f1b-24d1af29671e",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "a9f924d5-6921-418f-aeb4-8458ef778324",
+			"id": "2cc7769e-57e4-45bd-b5f7-833fa3467a20",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "273e363f-49cb-4835-aca4-d8942ef6c4e9",
+			"id": "02ad41ee-9257-44cd-8847-8b9fbdb03f14",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "85fb501e-6321-4bb7-89a9-8f7a435cec95",
+			"id": "970dfc12-3872-4309-a7d8-ee383992b424",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "6aa0c6a5-f894-433d-b0c8-50af068fb9de",
+			"id": "31b89d9d-e482-4348-a170-80d874dede51",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "57190c93-f6a4-4a6a-91e4-ffdbf0e45ef4",
+			"id": "f66556cb-125d-4d7d-89aa-699f9d43595a",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "d1a578e2-5a2e-4943-9033-8545b4241a88",
+			"id": "14252184-73cc-4bf0-863f-6a2b09331bf9",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "c4fee869-95e6-457a-a9c7-6dda06cf0b5a",
+			"id": "4d4c1aab-526f-4f8c-a195-18ee54f326fb",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "a81e4158-3775-4f35-ab90-b3b659c2e1ac",
+			"id": "816d1729-124f-47af-b6d4-2b1f4f8b4a0d",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "8f3ee70c-2dd9-4da2-a20f-d6029d453738",
+			"id": "5d9ab1ec-21eb-410e-bd74-faf1a4906525",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "82440ac0-475c-41d6-820f-f74d4c35e28b",
+			"id": "3032cbd5-9d37-418a-a005-85b68aa5cf60",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "1c1c045d-a5db-4add-bbd3-5ddfb165f4ac",
+			"id": "53464524-515d-4b5c-a5c7-c2ff9e1a64a4",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "f726757f-f2ee-444b-a51b-563df4df8202",
+			"id": "925ac3a8-8186-48b7-a234-5d19fd35ed38",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "e6aeade5-9a6e-4bc6-a55a-db221dc01018",
+			"id": "53fb8ed4-245d-4d16-92f1-e05c61b26021",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "926b2511-21b8-44aa-8586-908db0380e41",
+			"id": "75de4607-67cb-4f51-bff3-39b135c3ec7b",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "90c07ea7-bb45-4da7-bc97-dd7a3a65aa95",
+			"id": "39993cba-4563-4fac-b719-da31870e9ef6",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "15f08e67-b152-4895-8205-296f93c61d05",
+			"id": "964fb60b-b50d-4d0b-8534-51ad6d6bbe73",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "6b5772f3-a499-4576-bb09-8e8034b598e4",
+			"id": "1ab76016-75b0-4e22-aa57-29a2e2bdee57",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "f15efc52-95d8-4ddb-8f14-a0dd55e7cfa2",
+			"id": "d7cad4dc-22a3-4f65-ae2e-220b4aa60477",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "c7814745-b604-4cf1-98c2-d8ef78682842",
+			"id": "49a1820d-7782-4121-a49c-8c12534773aa",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "a7248abf-3b8b-4eeb-86a1-548b56e9b16f",
+			"id": "18bf62b4-b2b2-4da9-afb5-152e689eb5a1",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "2230da00-c6eb-4ed9-a932-1fb55e06f09b",
+			"id": "82f23981-40e1-4715-996d-c3fbd1a1dfab",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "02de24e2-b733-498a-8fbe-c76b1c1470df",
+			"id": "eee8e9f8-e66b-4ab8-85ef-725a05f34a5f",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

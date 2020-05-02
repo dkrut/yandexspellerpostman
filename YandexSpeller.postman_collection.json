@@ -1176,7 +1176,10 @@
 															"key": "{{paramText}}",
 															"value": "{{testTextPart1}} {{testTextPart2}}"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1225,7 +1228,10 @@
 															"value": "{{testRepeatText}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1279,7 +1285,10 @@
 															"value": "{{testTextCapitalization}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1332,7 +1341,10 @@
 															"value": "{{testTextDigits}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1383,7 +1395,10 @@
 															"value": "{{testHtml}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1432,7 +1447,10 @@
 															"value": "{{testTextSeveralRows}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1485,7 +1503,10 @@
 															"value": "{{testErrorTextSeveralRows}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1544,7 +1565,10 @@
 															"value": "{{testTextWithOneError}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1603,7 +1627,10 @@
 															"value": "{{testTextWithFewErrors}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1659,7 +1686,10 @@
 															"value": "{{testTextUrl}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1715,7 +1745,10 @@
 															"value": "{{testTextEmail}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1798,115 +1831,10 @@
 															"value": "{{formatHTML}}",
 															"type": "text"
 														}
-													]
-												},
-												"url": {
-													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
-													"host": [
-														"{{yandexSpellerJson}}"
 													],
-													"path": [
-														"{{methodCheckText}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "CorrectHtmlFormatPlain_JCTP",
-											"event": [
-												{
-													"listen": "prerequest",
-													"script": {
-														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
-														"exec": [
-															"pm.environment.set(\"jsonDataLength\", \"4\");"
-														],
-														"type": "text/javascript"
+													"options": {
+														"formdata": {}
 													}
-												},
-												{
-													"listen": "test",
-													"script": {
-														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
-														"exec": [
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "formdata",
-													"formdata": [
-														{
-															"key": "{{paramText}}",
-															"value": "{{testHtml}}",
-															"type": "text"
-														},
-														{
-															"key": "{{paramFormat}}",
-															"value": "{{formatPlain}}",
-															"type": "text"
-														}
-													]
-												},
-												"url": {
-													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
-													"host": [
-														"{{yandexSpellerJson}}"
-													],
-													"path": [
-														"{{methodCheckText}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "CorrectTextFormatPlain_JCTP",
-											"event": [
-												{
-													"listen": "prerequest",
-													"script": {
-														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
-														"exec": [
-															""
-														],
-														"type": "text/javascript"
-													}
-												},
-												{
-													"listen": "test",
-													"script": {
-														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
-														"exec": [
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "formdata",
-													"formdata": [
-														{
-															"key": "{{paramText}}",
-															"value": "{{testTextPart1}}",
-															"type": "text"
-														},
-														{
-															"key": "{{paramFormat}}",
-															"value": "{{formatPlain}}",
-															"type": "text"
-														}
-													]
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -1960,7 +1888,10 @@
 															"value": "{{option_IGNORE_CAPITALIZATION}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -2014,7 +1945,10 @@
 															"value": "{{option_IGNORE_DIGITS}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -2068,7 +2002,10 @@
 															"value": "{{option_IGNORE_URLS}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -2128,7 +2065,10 @@
 															"value": "{{option_FIND_REPEAT_WORDS}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -2183,7 +2123,10 @@
 															"value": "{{collectionOption}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -2246,7 +2189,10 @@
 															"value": "{{collectionOption}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -2309,7 +2255,124 @@
 															"value": "{{collectionOption}}",
 															"type": "text"
 														}
+													],
+													"options": {
+														"formdata": {}
+													}
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
 													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextFormatPlain_JCTP",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}",
+															"type": "text"
+														}
+													],
+													"options": {
+														"formdata": {}
+													}
+												},
+												"url": {
+													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+													"host": [
+														"{{yandexSpellerJson}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtmlFormatPlain_JCTP",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+														"exec": [
+															"pm.environment.set(\"jsonDataLength\", \"4\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}",
+															"type": "text"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}",
+															"type": "text"
+														}
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
@@ -2348,6 +2411,239 @@
 									],
 									"protocolProfileBehavior": {},
 									"_postman_isSubFolder": true
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Unsupported methods",
+							"item": [
+								{
+									"name": "DELETErequest",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+												"exec": [
+													"pm.environment.set(\"requestResult\", \"405\");",
+													"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+												"exec": [
+													"pm.test(\"Body contains string 'Method not allowed'\", function () {",
+													"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"text\" : \"{{testTextPart1}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+											"host": [
+												"{{yandexSpellerJson}}"
+											],
+											"path": [
+												"{{methodCheckText}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUTrequest",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
+												"exec": [
+													"pm.environment.set(\"requestResult\", \"405\");",
+													"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
+												"exec": [
+													"pm.test(\"Body contains string 'Method not allowed'\", function () {",
+													"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"text\" : \"{{testTextPart1}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+											"host": [
+												"{{yandexSpellerJson}}"
+											],
+											"path": [
+												"{{methodCheckText}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "ErrorMethodName",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
+												"exec": [
+													"pm.environment.set(\"requestResult\", \"404\");",
+													"pm.environment.set(\"responseErrorMethod\", \"Yandex.Speller API documentation can be found here: https://tech.yandex.ru/speller/\");"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
+												"exec": [
+													"pm.test(\"Body contains string 'Method not allowed'\", function () {",
+													"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{yandexSpellerJson}}/{{methodErrorName}}",
+											"host": [
+												"{{yandexSpellerJson}}"
+											],
+											"path": [
+												"{{methodErrorName}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CheckTextWithoutParams",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
+												"exec": [
+													"pm.environment.set(\"jsonDataLength\", \"0\");",
+													"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
+													"pm.environment.set(\"responseData\", \"json\");"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
+											"host": [
+												"{{yandexSpellerJson}}"
+											],
+											"path": [
+												"{{methodCheckText}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CheckTextsWithoutParams",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
+												"exec": [
+													"pm.environment.set(\"jsonDataLength\", \"0\");",
+													"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
+													"pm.environment.set(\"responseData\", \"json\");"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
+											"host": [
+												"{{yandexSpellerJson}}"
+											],
+											"path": [
+												"{{methodCheckTexts}}"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"protocolProfileBehavior": {},
@@ -3603,7 +3899,10 @@
 															"value": "{{testTextPart2}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -3657,7 +3956,10 @@
 															"value": "{{testRepeatText}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -3716,7 +4018,10 @@
 															"value": "{{testTextCapitalization}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -3774,7 +4079,10 @@
 															"value": "{{testTextDigits}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -3831,7 +4139,10 @@
 															"value": "{{testHtml}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -3885,7 +4196,10 @@
 															"value": "{{testTextSeveralRows}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -3945,7 +4259,10 @@
 															"value": "{{testErrorTextSeveralRows}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4009,7 +4326,10 @@
 															"value": "{{testTextWithOneError}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4073,7 +4393,10 @@
 															"value": "{{testTextWithFewErrors}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4135,7 +4458,10 @@
 															"value": "{{testTextEmail}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4223,7 +4549,10 @@
 															"value": "{{formatHTML}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4285,7 +4614,10 @@
 															"value": "{{formatPlain}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4344,7 +4676,10 @@
 															"value": "{{formatPlain}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4403,7 +4738,10 @@
 															"value": "{{option_IGNORE_CAPITALIZATION}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4462,7 +4800,10 @@
 															"value": "{{option_IGNORE_DIGITS}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4521,7 +4862,10 @@
 															"value": "{{option_IGNORE_URLS}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4586,7 +4930,10 @@
 															"value": "{{option_FIND_REPEAT_WORDS}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4646,7 +4993,10 @@
 															"value": "{{collectionOption}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4719,7 +5069,10 @@
 															"value": "{{collectionOption}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -4802,7 +5155,10 @@
 															"value": "{{collectionOption}}",
 															"type": "text"
 														}
-													]
+													],
+													"options": {
+														"formdata": {}
+													}
 												},
 												"url": {
 													"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
@@ -5501,6 +5857,546 @@
 									],
 									"protocolProfileBehavior": {},
 									"_postman_isSubFolder": true
+								},
+								{
+									"name": "WithOptionalParams",
+									"item": [
+										{
+											"name": "CorrectHtmlFormatHtml_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "5f885353-c07a-4a63-a85b-98624560801e",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "3a320b66-d378-412d-90c2-50d96d247193",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testHtml}}&{{paramFormat}}={{formatHTML}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatHTML}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectHtmlFormatPlain_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "838220ca-cd24-467c-824b-834b0367ac1e",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "0d31bce6-e74d-4fe4-b880-856fcd20eb4b",
+														"exec": [
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Errors count is' + 4] = jsonObject['SpellResult'].error.length === 4"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testHtml}}&{{paramFormat}}={{formatPlain}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testHtml}}"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "CorrectTextFormatPlain_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "888e91ca-3eb0-421e-ab3d-09e26340cf5e",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "f1867c31-c459-4f73-a46c-3fb7ca16a9a4",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextPart1}}&{{paramFormat}}={{formatPlain}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextPart1}}"
+														},
+														{
+															"key": "{{paramFormat}}",
+															"value": "{{formatPlain}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "7a04f68a-648b-4458-842f-d47dda6c0cda",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "d46c94cd-fe02-4859-bcfc-782c32202b5b",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextCapitalization}}&{{paramOptions}}={{option_IGNORE_CAPITALIZATION}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_CAPITALIZATION}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreDigits_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "823bdc1f-c323-4e59-8110-c17a62ac64eb",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "a693c755-3a0c-4bf8-a753-b72250c12dd2",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextDigits}}&{{paramOptions}}={{option_IGNORE_DIGITS}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextDigits}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_DIGITS}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreUrls_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "5d807847-6ecf-4b31-a497-cc1ab4b24001",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "097a3a3c-f62f-4d5c-a6a8-115564aa0fcb",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextUrl}}+{{testTextEmail}}&{{paramOptions}}={{option_IGNORE_URLS}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextUrl}}+{{testTextEmail}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_IGNORE_URLS}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "2c19f1ff-14d5-4ec2-99be-c42cb475743a",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "8128ec48-effa-439a-b1e9-753842a2abef",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_REPEAT_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Errors code is ' + errorCode] = jsonObject['SpellResult'].error.$.code === errorCode;",
+															"tests['Error word'] = jsonObject['SpellResult'].error.word === \"повтора\";"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testRepeatText}}&{{paramOptions}}={{option_FIND_REPEAT_WORDS}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{option_FIND_REPEAT_WORDS}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "463b7b75-0b10-4092-82d8-064ed35f21d4",
+														"exec": [
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "8efd9299-1970-4637-adfb-f9e1f490184e",
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextCapitalization}}+{{testTextDigits}}&{{paramOptions}}={{collectionOption}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}+{{testTextDigits}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionFindRepeatWords&IgnoreUrls_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "19c09c2a-cd9c-428b-8118-9181404cf3d5",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "413c87b2-d1e6-4cdb-8f5d-c9654ed053ba",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_REPEAT_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Errors code is ' + errorCode] = jsonObject['SpellResult'].error.$.code === errorCode;",
+															"tests['Error word'] = jsonObject['SpellResult'].error.word === \"повтора\";"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testRepeatText}}+{{testTextEmail}}+и+{{testTextUrl}}&{{paramOptions}}={{collectionOption}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testRepeatText}}+{{testTextEmail}}+и+{{testTextUrl}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "OptionIgnoreCapitalization&IgnoreDigits&FindRepeatWords&IgnoreUrls_XCTG",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"id": "8c973947-73e5-4159-9294-613082ecb648",
+														"exec": [
+															"pm.environment.set(\"rootElement\", \"<SpellResult>\");",
+															"",
+															"var collectionOption = parseInt(pm.variables.get(\"option_IGNORE_CAPITALIZATION\")) + parseInt(pm.variables.get(\"option_IGNORE_DIGITS\")) + parseInt(pm.variables.get(\"option_IGNORE_URLS\")) + parseInt(pm.variables.get(\"option_FIND_REPEAT_WORDS\"));",
+															"pm.environment.set(\"collectionOption\", collectionOption);"
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"id": "64a94873-e98f-4cb5-8141-d32f116a09c5",
+														"exec": [
+															"var errorCode = pm.variables.get(\"ERROR_REPEAT_WORD\");",
+															"var jsonObject = xml2Json(responseBody);",
+															"",
+															"tests['Errors code is ' + errorCode] = jsonObject['SpellResult'].error.$.code === errorCode;",
+															"tests['Error word'] = jsonObject['SpellResult'].error.word === \"повтора\";"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{yandexSpellerXml}}/{{methodCheckText}}?{{paramText}}={{testTextCapitalization}}+{{testTextDigits}}+{{testRepeatText}}+{{testTextEmail}}+и+{{testTextUrl}}&{{paramOptions}}={{collectionOption}}",
+													"host": [
+														"{{yandexSpellerXml}}"
+													],
+													"path": [
+														"{{methodCheckText}}"
+													],
+													"query": [
+														{
+															"key": "{{paramText}}",
+															"value": "{{testTextCapitalization}}+{{testTextDigits}}+{{testRepeatText}}+{{testTextEmail}}+и+{{testTextUrl}}"
+														},
+														{
+															"key": "{{paramOptions}}",
+															"value": "{{collectionOption}}"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "6acd80b4-f1ff-4a03-b2c4-299fa95e00da",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "f19463fd-9998-4692-b2cd-b3b8e7f55536",
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									],
+									"protocolProfileBehavior": {},
+									"_postman_isSubFolder": true
 								}
 							],
 							"protocolProfileBehavior": {},
@@ -5559,260 +6455,6 @@
 				}
 			],
 			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Other",
-			"item": [
-				{
-					"name": "ErrorMethodName",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
-								"exec": [
-									"pm.environment.set(\"requestResult\", \"404\");",
-									"pm.environment.set(\"responseErrorMethod\", \"Yandex.Speller API documentation can be found here: https://tech.yandex.ru/speller/\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
-								"exec": [
-									"pm.test(\"Body contains string 'Method not allowed'\", function () {",
-									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{yandexSpellerJson}}/{{methodErrorName}}",
-							"host": [
-								"{{yandexSpellerJson}}"
-							],
-							"path": [
-								"{{methodErrorName}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CheckTextWithoutParams",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
-								"exec": [
-									"pm.environment.set(\"jsonDataLength\", \"0\");",
-									"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
-									"pm.environment.set(\"responseData\", \"json\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
-							"host": [
-								"{{yandexSpellerJson}}"
-							],
-							"path": [
-								"{{methodCheckText}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CheckTextsWithoutParams",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
-								"exec": [
-									"pm.environment.set(\"jsonDataLength\", \"0\");",
-									"pm.environment.set(\"contentTypeHeader\", \"application/json; charset=utf-8\");",
-									"pm.environment.set(\"responseData\", \"json\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "0499ffe9-3d9d-4669-b690-92db9bbfc10c",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{yandexSpellerJson}}/{{methodCheckTexts}}",
-							"host": [
-								"{{yandexSpellerJson}}"
-							],
-							"path": [
-								"{{methodCheckTexts}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PUTrequest",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
-								"exec": [
-									"pm.environment.set(\"requestResult\", \"405\");",
-									"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
-								"exec": [
-									"pm.test(\"Body contains string 'Method not allowed'\", function () {",
-									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"text\" : \"{{testTextPart1}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
-							"host": [
-								"{{yandexSpellerJson}}"
-							],
-							"path": [
-								"{{methodCheckText}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETErequest",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
-								"exec": [
-									"pm.environment.set(\"requestResult\", \"405\");",
-									"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "974c372d-91e0-4027-91ed-6e9d0ba85fdd",
-								"exec": [
-									"pm.test(\"Body contains string 'Method not allowed'\", function () {",
-									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"responseErrorMethod\"));",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"text\" : \"{{testTextPart1}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{yandexSpellerJson}}/{{methodCheckText}}",
-							"host": [
-								"{{yandexSpellerJson}}"
-							],
-							"path": [
-								"{{methodCheckText}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "e4f90f12-db34-4152-be75-637e470bf46a",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "afe95b41-7995-43b2-9cbd-df11f09080ea",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			],
-			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -5858,193 +6500,193 @@
 	],
 	"variable": [
 		{
-			"id": "ed83941c-8c29-48a4-bd8b-47bef0f59538",
+			"id": "5c9fe902-4c1d-4c50-be6a-6b26ca7dbb48",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "24111cbf-72c6-437d-a1ea-f8450497ccce",
+			"id": "fd1e9b25-f52e-4c18-aef2-5137815f5774",
 			"key": "yandexSpellerXml",
 			"value": "http://speller.yandex.net/services/spellservice",
 			"type": "string"
 		},
 		{
-			"id": "c9328af5-367f-4d1e-b555-cb9e528377ae",
+			"id": "f72c5dd8-1ea7-43bd-9cc7-bfd053606d2f",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "9223c00b-3654-4a3b-af0f-91b27bd1f914",
+			"id": "51b8b16b-7044-4bcb-9e73-cb38e5470f17",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "20c07b8f-4b6d-47c6-9b50-3749d9a454a8",
+			"id": "fa2b7e49-19ac-4155-9ab7-51f7da2b7999",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "c099c388-1a20-43d1-91e5-8e94c129cbd3",
+			"id": "af8eae01-25f9-4879-bed4-b6ab0475a0f0",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "839c885f-fe1b-4093-869a-094a03ea138d",
+			"id": "892be1a1-e021-414a-b902-bc1ef59668de",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "c81e6d44-fcae-4349-99e2-125193dc6775",
+			"id": "cd97f2da-1ae5-4e8b-8e15-f6b6c99805ed",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "f282e70d-8b0b-4dc8-a124-4cdfb0a04d67",
+			"id": "8272f233-62db-4400-ab8e-14a0610c56f1",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "1ee73706-5611-47aa-b75a-c184e1dd57d1",
+			"id": "f521e72a-e6cb-407e-a52d-79f6b81c480b",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "76860562-f383-44fd-bc8f-1d42459360b4",
+			"id": "8907ea97-c9f6-48e2-8dd3-30934d81e8bf",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "f8d99bd6-15c0-408e-bbc2-b8f7e72b7513",
+			"id": "58ff12d5-b64f-4827-9cbf-826e902461e8",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "fea70620-6e19-4f86-8017-7bef4a0ef886",
+			"id": "9b7bc5ee-0395-4963-b44a-da9450078416",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "a76b251e-a374-4398-bb29-53ba245d21b4",
+			"id": "39bd0075-f62f-453a-84ff-90d8b395985c",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "7a07adc5-78d9-422a-931f-8232c8cb7d98",
+			"id": "c0c57e4e-88bd-4b20-9864-d78fc00a3784",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "31c5150b-da9f-4d6e-b541-7306d8c88ddc",
+			"id": "8e5e0f61-7cab-4139-ad68-849f44240014",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "c61f8d3f-02e7-4477-bbc7-5871c6d97bf6",
+			"id": "bfa35728-7f10-43fb-97b5-3d910b809976",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "e43fc310-ccfc-426b-9410-350effba6a7d",
+			"id": "bff1360e-690f-4731-948e-df4896a45589",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "8a943909-473d-4fdb-885b-77b4fe0a241c",
+			"id": "bf50cbb4-47ef-4173-8816-e33378173079",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "d8588ac9-d331-45d7-9233-dbad04453cbb",
+			"id": "1ee1f1ea-5b6f-4d5a-83fd-32dd139cdd47",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "174a600a-5194-4c8b-955e-ac4b9fb1d4f2",
+			"id": "62a4d419-9cd0-4875-82bd-33cff733f754",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "a1adbb7c-b3c8-4b80-88a9-89e0d3538bdf",
+			"id": "bc3038bf-0784-4de8-999d-b4d0078d3c6f",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "eaf6f078-fc2e-4f23-92d4-281827a0b674",
+			"id": "fdce034e-911f-48de-a797-1ee14fa39058",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "94610d3c-e97a-46f8-adc2-dbbdc693032c",
+			"id": "db6bd049-d11f-4c82-8e4c-5864e435e28c",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "ea521c1e-1503-4c7c-b171-d33d7c18c9c6",
+			"id": "4966c527-9f71-4b28-8480-587b247b398d",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "5e707a1d-0cdc-4d0d-9e5b-ef697f58a6f0",
+			"id": "42c54bde-7089-4fbe-bf7b-478a22342408",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "02024f6a-6728-4a5c-b76a-8a3a5f76305f",
+			"id": "8bbcf873-a13f-4a71-b02b-91324a662877",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "acb83a44-743c-4779-a182-69443f6ffe42",
+			"id": "027c5320-e944-41d5-8fb0-46d1e8ec1591",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "b77eb5be-8749-4524-a146-0cf9cd58dfa5",
+			"id": "abd6000d-f24b-4307-a283-e99c65f06d17",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "585b4ff6-57b0-4329-bb87-df95c11e983b",
+			"id": "93d153d1-19d7-4401-9dbc-14c35557d2bc",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "c2db04a8-b882-4c56-9e02-2c7659c047cb",
+			"id": "96813abb-3540-4ed4-9d44-1220a27657d0",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "a8ec361e-59eb-49ef-9e17-56b663fd0175",
+			"id": "666839a4-6d61-4367-b6ad-03ed80f53113",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"

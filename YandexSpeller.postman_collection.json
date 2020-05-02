@@ -2428,7 +2428,8 @@
 												"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 												"exec": [
 													"pm.environment.set(\"requestResult\", \"405\");",
-													"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
+													"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");",
+													"pm.environment.set(\"contentTypeHeader\", \"text/plain\");"
 												],
 												"type": "text/javascript"
 											}
@@ -2479,7 +2480,8 @@
 												"id": "4cf4cb8b-c442-4ef9-abab-6a32ae19a2dc",
 												"exec": [
 													"pm.environment.set(\"requestResult\", \"405\");",
-													"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");"
+													"pm.environment.set(\"responseErrorMethod\", \"Method not allowed\");",
+													"pm.environment.set(\"contentTypeHeader\", \"text/plain\");"
 												],
 												"type": "text/javascript"
 											}
@@ -2530,7 +2532,8 @@
 												"id": "11dfb53b-667f-4d66-8d36-e5b7b311086c",
 												"exec": [
 													"pm.environment.set(\"requestResult\", \"404\");",
-													"pm.environment.set(\"responseErrorMethod\", \"Yandex.Speller API documentation can be found here: https://tech.yandex.ru/speller/\");"
+													"pm.environment.set(\"responseErrorMethod\", \"Yandex.Speller API documentation can be found here: https://tech.yandex.ru/speller/\");",
+													"pm.environment.set(\"contentTypeHeader\", \"text/plain\");"
 												],
 												"type": "text/javascript"
 											}
@@ -5269,11 +5272,15 @@
 						"id": "b6b8d4fc-028d-4987-aee6-5d39943cf1aa",
 						"type": "text/javascript",
 						"exec": [
+							"var contentTypeHeader = pm.environment.get(\"contentTypeHeader\");",
 							"var count = parseInt(pm.environment.get(\"jsonDataLength\"));",
+							"",
+							"if (contentTypeHeader === 'json') {",
 							"pm.test(\"Response json length is \" + count, function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.length).to.eql(count);",
-							"});"
+							"});",
+							"}"
 						]
 					}
 				}
@@ -7954,18 +7961,18 @@
 				"type": "text/javascript",
 				"exec": [
 					"var requestResult = parseInt(pm.environment.get(\"requestResult\"));",
+					"var responseData = pm.environment.get(\"responseData\");",
+					"",
 					"pm.test(\"Status code is \" + requestResult, function () {",
 					"    pm.response.to.have.status(requestResult);",
 					"});",
 					"",
-					"if (requestResult === 200) {",
+					"if (requestResult === 200 && (responseData === 'json' || responseData === 'xml')) {",
 					"    var contentTypeHeader = pm.environment.get(\"contentTypeHeader\");",
 					"    pm.test(\"Header. Content-Type is \" + contentTypeHeader, function () {",
 					"       pm.response.to.be.header(\"Content-Type\", contentTypeHeader);",
 					"    });",
 					"",
-					"",
-					"    var responseData = (pm.environment.get(\"responseData\"));",
 					"    pm.test(\"Response is \" + responseData, function () {",
 					"        if (responseData === 'json') {",
 					"            pm.response.to.be.json;",
@@ -7979,193 +7986,193 @@
 	],
 	"variable": [
 		{
-			"id": "282464e1-1dc6-4fde-b054-0db8c24a59f5",
+			"id": "4b36c0ed-c0db-4aa7-b577-7dbdedb42bd0",
 			"key": "yandexSpellerJson",
 			"value": "http://speller.yandex.net/services/spellservice.json",
 			"type": "string"
 		},
 		{
-			"id": "eece195b-5ee3-4041-9a68-889c9bdcfef9",
+			"id": "c26059d2-1b4b-47f1-9710-839e37d225d5",
 			"key": "yandexSpellerXml",
 			"value": "http://speller.yandex.net/services/spellservice",
 			"type": "string"
 		},
 		{
-			"id": "408f96c4-7d10-4a9d-a54a-13db6d579064",
+			"id": "18780a6c-8953-44d1-acb7-86bd109669f6",
 			"key": "methodCheckText",
 			"value": "checkText",
 			"type": "string"
 		},
 		{
-			"id": "9e44f611-122c-4775-8e8a-3eb66b395d8b",
+			"id": "a3b0a2ee-93a5-4327-b47b-cba8b4186244",
 			"key": "methodCheckTexts",
 			"value": "checkTexts",
 			"type": "string"
 		},
 		{
-			"id": "8839bed8-c702-45a6-b6b6-0d401a196887",
+			"id": "098d1af5-fa06-49bd-9eba-1ae5a56b3eef",
 			"key": "methodErrorName",
 			"value": "chekText",
 			"type": "string"
 		},
 		{
-			"id": "cb086729-2c6b-47c8-9933-6c990d920489",
+			"id": "68887cdb-a8de-4719-bdfb-a86e997babaf",
 			"key": "paramText",
 			"value": "text",
 			"type": "string"
 		},
 		{
-			"id": "97e4147f-a183-46a6-b61b-f65b85caf353",
+			"id": "f03a6538-5c0f-432a-b8de-50abe5268c7a",
 			"key": "paramLang",
 			"value": "lang",
 			"type": "string"
 		},
 		{
-			"id": "31a48ed4-abc5-4710-883a-010f311b24c0",
+			"id": "35452da4-4f1e-4c3d-ac3c-a23e56ab2b55",
 			"key": "paramOptions",
 			"value": "options",
 			"type": "string"
 		},
 		{
-			"id": "401fd54f-1358-4d77-b325-6c3412d8ea22",
+			"id": "73e84902-079d-4365-add3-e280e4da0c24",
 			"key": "paramFormat",
 			"value": "format",
 			"type": "string"
 		},
 		{
-			"id": "3a483ca4-7006-4726-a841-b7dd7c5228ed",
+			"id": "8cfeaed9-ebde-45f2-aa8a-46c022c1bd48",
 			"key": "option_IGNORE_DIGITS",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "017e4645-6888-460c-8ebb-9f214350e482",
+			"id": "f1fb19d8-d0f2-42b5-b596-babb5397bd33",
 			"key": "option_IGNORE_URLS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "5a98f328-e1a7-48bc-b184-0015da98a211",
+			"id": "2e39f729-055d-4f2d-bac3-a2ae4937e4c2",
 			"key": "option_FIND_REPEAT_WORDS",
 			"value": "8",
 			"type": "string"
 		},
 		{
-			"id": "e549e27f-2b02-4cff-bd9a-9fa52cef11af",
+			"id": "456a5893-9bb6-4d14-81f9-6aa0d06ddd23",
 			"key": "option_IGNORE_CAPITALIZATION",
 			"value": "512",
 			"type": "string"
 		},
 		{
-			"id": "9392efa3-5bbf-48b5-99a4-be34e3b839e2",
+			"id": "72d4ec7c-7a5b-47b4-833d-8cb1ac9a371a",
 			"key": "ERROR_UNKNOWN_WORD",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "55a7bf2b-1868-4e2a-995f-2f92e6c5b56e",
+			"id": "65dd1d9b-fa13-4dad-a81f-432983000c9e",
 			"key": "ERROR_REPEAT_WORD",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "fe4da08c-ac00-4a00-9289-eb4008a73ee3",
+			"id": "2c8d32da-3e10-427f-a159-8cf8793f8509",
 			"key": "ERROR_CAPITALIZATION",
 			"value": "3",
 			"type": "string"
 		},
 		{
-			"id": "b45999ae-b2ce-4ac1-b7c3-42757ff04bbf",
+			"id": "46fb4d84-d81e-4c94-80a4-062b890725a5",
 			"key": "ERROR_TOO_MANY_ERRORS",
 			"value": "4",
 			"type": "string"
 		},
 		{
-			"id": "8e0ad0a5-69f1-4413-8b7d-786d4a33d9ce",
+			"id": "fce8bb98-b1f0-4a65-9b07-68651952ba71",
 			"key": "formatPlain",
 			"value": "plain",
 			"type": "string"
 		},
 		{
-			"id": "d9bdddd2-19b6-4694-a373-5fc04b858101",
+			"id": "4963c18a-e65c-4554-9cdc-85dc290950d9",
 			"key": "formatHTML",
 			"value": "html",
 			"type": "string"
 		},
 		{
-			"id": "178a3732-4eb3-431d-88e2-30dff9d38f9d",
+			"id": "e1769b17-5ee7-4e8f-859a-c48ae7a08757",
 			"key": "langRU",
 			"value": "ru",
 			"type": "string"
 		},
 		{
-			"id": "2710b5c7-cdd7-43a4-9393-3dcf9f898f31",
+			"id": "6eab9695-5185-4411-a676-8a8b2e8aef2c",
 			"key": "langUK",
 			"value": "uk",
 			"type": "string"
 		},
 		{
-			"id": "8214d013-92bf-4ce2-99b1-64f0457fee6b",
+			"id": "b5535599-fccc-44c1-aa4f-7bb4f3454df4",
 			"key": "langEN",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "1d98ce62-e7d0-4b70-9b78-8161d056736b",
+			"id": "62c0389d-b479-4bac-b783-404ef6ee1f56",
 			"key": "elementArrayOfSpellResult",
 			"value": "ArrayOfSpellResult",
 			"type": "string"
 		},
 		{
-			"id": "f42a255a-c6c3-48d6-8572-47d5053ac90c",
+			"id": "06dfef48-f554-44a4-ac14-409b1d53985d",
 			"key": "elementSpellResult",
 			"value": "SpellResult",
 			"type": "string"
 		},
 		{
-			"id": "7d5a1c86-d7c7-4ea8-80fe-07f0fc601bd9",
+			"id": "68b6218a-1998-4ec2-9167-f74437654515",
 			"key": "elementError",
 			"value": "error",
 			"type": "string"
 		},
 		{
-			"id": "f9533a8d-070d-400a-b20d-1da94e9018b6",
+			"id": "7fa5dc3a-75ad-4d53-a0ed-2300eaf106fe",
 			"key": "elementWord",
 			"value": "word",
 			"type": "string"
 		},
 		{
-			"id": "7e1c73d9-939a-412b-ae4a-06ef87c95ca8",
+			"id": "428003d8-a0fa-44c5-8472-a912b7f38143",
 			"key": "elementS",
 			"value": "s",
 			"type": "string"
 		},
 		{
-			"id": "5b5e03e7-493c-48b1-88d3-7e057a9e789f",
+			"id": "ed6c90a7-c5cb-428d-b3cb-8b0736ce63c8",
 			"key": "errorCode",
 			"value": "code",
 			"type": "string"
 		},
 		{
-			"id": "19500f26-452a-4250-813e-684ccbf7a382",
+			"id": "6e6e0e85-9c99-4f9f-9005-9bc613e6f13a",
 			"key": "errorPos",
 			"value": "pos",
 			"type": "string"
 		},
 		{
-			"id": "b932e091-b125-452a-bb57-49ec8b6c64ce",
+			"id": "7f651667-9d49-4f85-8176-a731e59b308a",
 			"key": "errorRow",
 			"value": "row",
 			"type": "string"
 		},
 		{
-			"id": "f120355d-c523-4a9b-bc18-8209e4f3015f",
+			"id": "2b61999b-a562-41df-887b-a2ed8da60bf0",
 			"key": "errorCol",
 			"value": "col",
 			"type": "string"
 		},
 		{
-			"id": "17ce93f2-e53b-4777-ba72-2336dd332167",
+			"id": "6ca68e2c-57ae-46fc-a4b4-06733b1f1582",
 			"key": "errorLen",
 			"value": "len",
 			"type": "string"
